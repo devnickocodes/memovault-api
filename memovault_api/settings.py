@@ -39,6 +39,10 @@ ALLOWED_HOSTS = [
     os.environ.get('LOCAL_HOST')
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    os.environ.get('HEROKU_URL'),
+    os.environ.get('LOCAL_URL')
+]
 
 # Application definition
 
