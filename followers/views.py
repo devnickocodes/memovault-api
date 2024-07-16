@@ -15,3 +15,9 @@ class FollowerList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
+class FollowerDetail(generics.RetrieveDestroyAPIView):
+
+    permission_classes = [IsOwnerOrReadOnly]
+    queryset = Follower.objects.all()
+    serializer_class = FollowerSerializer
