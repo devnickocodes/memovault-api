@@ -5,7 +5,6 @@ from .models import Follower
 class FollowerSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
 
-
     def validate(self, data):
         if 'owner' not in data:
             data['owner'] = self.context['request'].user
