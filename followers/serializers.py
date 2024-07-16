@@ -5,6 +5,15 @@ from .models import Follower
 class FollowerSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
 
+
+    def validate(self, data):
+        if 'owner' not in data:
+            data['owner'] = self.context['request'].user
+
+        if data['owner'] == data['followed']:
+            raise serializers.ValidationError({'details': "A user cannot follow themselves."})
+        return data
+
     class Meta:
         model = Follower
         fields = ['id', 'owner', 'followed', 'created_at']
