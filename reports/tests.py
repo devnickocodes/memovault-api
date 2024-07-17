@@ -58,3 +58,10 @@ class ReportTests(APITestCase):
         url = f'/reports/{report.id}/'
         response = self.client.delete(url)
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+    def test_delete_report_authenticated_non_owner(self):
+        other_user = User.objects.create_user(username='otheruser', password='12345')
+        report = Report.objects.create(post=self.post, reason='spam', owner=other_user)
+        url = f'/reports/{report.id}/'
+        response = self.client.delete(url)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
