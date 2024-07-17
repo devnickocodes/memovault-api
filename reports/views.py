@@ -2,6 +2,7 @@ from rest_framework import generics, permissions
 from rest_framework.exceptions import NotAuthenticated
 from .models import Report
 from .serializers import ReportSerializer
+from memovault_api.permissions import IsAdmin
 
 class ReportListCreate(generics.ListCreateAPIView):
     serializer_class = ReportSerializer
@@ -17,7 +18,7 @@ class ReportListCreate(generics.ListCreateAPIView):
         serializer.save(owner=self.request.user)
 
 
-class ReportDetailView(generics.RetrieveUpdateDestroyAPIView):
+class ReportDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ReportSerializer
     permission_classes = [permissions.IsAuthenticated]
 
@@ -28,3 +29,7 @@ class ReportDetailView(generics.RetrieveUpdateDestroyAPIView):
             raise NotAuthenticated("You must be logged in to access this report.")
 
 
+class AdminReportList(generics.ListAPIView):
+    serializer_class = ReportSerializer
+    permission_classes = [IsAdmin]
+    queryset = Report.objects.all()
