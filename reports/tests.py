@@ -39,3 +39,15 @@ class ReportTests(APITestCase):
         url = f'/reports/{report.id}/'
         response = self.client.patch(url, update_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+
+    def test_update_report_authenticated_non_owner(self):
+        other_user = User.objects.create_user(username='otheruser', password='12345')
+        report = Report.objects.create(post=self.post, reason='spam', owner=other_user)
+        update_data = {
+            'reason': 'inappropriate',
+            'custom_reason': 'This is inappropriate'
+        }
+        url = f'/reports/{report.id}/'
+        response = self.client.patch(url, update_data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
