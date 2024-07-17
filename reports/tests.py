@@ -8,6 +8,7 @@ class ReportTests(APITestCase):
 
     def setUp(self):
         self.user = User.objects.create_user(username='testuser', password='12345')
+        self.admin = User.objects.create_user(username='admin', password='123456', is_staff=True)
         self.client.force_authenticate(user=self.user)
         self.post = Post.objects.create(title='Test Post', content='This is a test post.', owner=self.user)
 
@@ -65,3 +66,18 @@ class ReportTests(APITestCase):
         url = f'/reports/{report.id}/'
         response = self.client.delete(url)
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+
+    def test_list_reports_admin_authenticated(self):
+        self.client.force_authenticate(user=self.admin)
+        response = self.client.get('/reports/admin/')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+
+
+
+
+
+
+
+
