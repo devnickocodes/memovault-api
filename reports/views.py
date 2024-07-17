@@ -2,7 +2,7 @@ from rest_framework import generics, permissions
 from rest_framework.exceptions import NotAuthenticated
 from .models import Report
 from .serializers import ReportSerializer
-from memovault_api.permissions import IsAdmin
+from memovault_api.permissions import IsAdmin, IsOwnerOrReadOnly
 
 class ReportListCreate(generics.ListCreateAPIView):
     serializer_class = ReportSerializer
@@ -20,7 +20,7 @@ class ReportListCreate(generics.ListCreateAPIView):
 
 class ReportDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ReportSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated, IsOwnerOrReadOnly]
 
     def get_queryset(self):
         if self.request.user.is_authenticated:
@@ -30,6 +30,11 @@ class ReportDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class AdminReportList(generics.ListAPIView):
+    serializer_class = ReportSerializer
+    permission_classes = [IsAdmin]
+    queryset = Report.objects.all()
+
+class AdminReportDetail(generics.RetrieveDestroyAPIView):
     serializer_class = ReportSerializer
     permission_classes = [IsAdmin]
     queryset = Report.objects.all()
