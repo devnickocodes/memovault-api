@@ -19,3 +19,14 @@ class ReportTests(APITestCase):
         }
         response = self.client.post('/reports/', post_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+    def test_create_report_unauthenticated(self):
+            self.client.force_authenticate(user=None)
+            post_data = {
+                'post': self.post.id,
+                'reason': 'spam',
+                'custom_reason': 'This is a spam report'
+            }
+            response = self.client.post('/reports/', post_data, format='json')
+            self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
