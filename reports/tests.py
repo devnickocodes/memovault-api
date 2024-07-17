@@ -86,4 +86,8 @@ class ReportTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
 
-
+    def test_retrieve_report_admin_unauthenticated(self):
+        report = Report.objects.create(post=self.post, reason='spam', owner=self.user)
+        url = f'/reports/admin/{report.id}/'
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
