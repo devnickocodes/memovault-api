@@ -8,7 +8,10 @@ class ReportListCreate(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
-        return Report.objects.filter(owner=self.request.user)
+        if self.request.user.is_authenticated:
+            return Report.objects.filter(owner=self.request.user)
+        else:
+            raise NotAuthenticated("You must be logged in to view reports.")
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
