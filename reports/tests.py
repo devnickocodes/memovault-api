@@ -74,8 +74,9 @@ class ReportTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
 
-
-
+    def test_list_reports_admin_unauthenticated(self):
+        response = self.client.get('/reports/admin/')
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
 
 
