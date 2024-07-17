@@ -30,3 +30,12 @@ class ReportTests(APITestCase):
             response = self.client.post('/reports/', post_data, format='json')
             self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
+    def test_update_report_authenticated_owner(self):
+        report = Report.objects.create(post=self.post, reason='spam', owner=self.user)
+        update_data = {
+            'reason': 'inappropriate',
+            'custom_reason': 'This is inappropriate'
+        }
+        url = f'/reports/{report.id}/'
+        response = self.client.patch(url, update_data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
