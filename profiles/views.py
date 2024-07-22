@@ -15,8 +15,13 @@ class ProfileList(generics.ListAPIView):
     ).order_by('-created_at')
     filter_backends = [
         filters.OrderingFilter,
+        filters.SearchFilter,
     ]
 
+    search_fields = [
+        'owner__username'
+    ]
+    
     ordering_fields  = [
         'posts_count',
         'followers_count',
