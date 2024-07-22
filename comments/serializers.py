@@ -5,6 +5,27 @@ from likes.models import CommentLike
 
 
 class CommentSerializer(serializers.ModelSerializer):
+    """
+    Serializer used to convert `Comment` instances to JSON format and
+    validate data when creating or updating comments.
+
+    Attributes:
+        owner (ReadOnlyField): The username of the user who is the owner of the comment.
+        is_owner (SerializerMethodField): Indicates whether the request user is the owner of the comment.
+        profile_id (ReadOnlyField): The ID of the profile associated with the comment's owner.
+        profile_image (ReadOnlyField): The URL of the profile image of the comment's owner.
+        created_at (SerializerMethodField): The timestamp when the comment was created.
+        updated_at (SerializerMethodField): The timestamp when the comment was last updated.
+        comment_like_id (SerializerMethodField): The ID of the comment like associated with the request user.
+        comment_likes_count (ReadOnlyField): The number of likes associated with the comment.
+
+    Methods:
+        get_is_owner: Returns a boolean indicating whether the request user is the owner of the comment.
+        get_comment_like_id: Returns the ID of the comment like if the request user has liked the comment.
+        get_created_at: Returns the creation timestamp of the comment.
+        get_updated_at: Returns the last update timestamp of the comment.
+    """
+
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
@@ -43,4 +64,10 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class CommentDetailSerializer(CommentSerializer):
+    """
+    Detailed serializer for the `Comment` model, extending `CommentSerializer`.
+
+    Attributes:
+        post (ReadOnlyField): The ID of the post associated with the comment.
+    """
     post = serializers.ReadOnlyField(source='post.id')
