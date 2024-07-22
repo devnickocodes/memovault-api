@@ -4,5 +4,5 @@ from rest_framework.response import Response
 @api_view()
 def root_route(request):
     return Response({
-        "message": "Welcome to the MemoVault DRF API!"
+        "message": "Welcome to the DRF API for the MemoVault website!"
     })
