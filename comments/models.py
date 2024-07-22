@@ -4,6 +4,10 @@ from posts.models import Post
 
 
 class Comment(models.Model):
+    """
+    Stores a single comment entry related to :model:`auth.User`.
+    And :model:`posts.Post`
+    """
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)

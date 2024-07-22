@@ -3,6 +3,7 @@ from rest_framework import serializers
 from .models import Comment
 from likes.models import CommentLike
 
+
 class CommentSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
@@ -25,14 +26,13 @@ class CommentSerializer(serializers.ModelSerializer):
             ).first()
             return comment_like_id.id if comment_like_id else None
         return None
-    
+
     def get_created_at(self, obj):
         return naturaltime(obj.created_at)
 
-
     def get_updated_at(self, obj):
         return naturaltime(obj.updated_at)
-    
+
     class Meta:
         model = Comment
         fields = [
@@ -40,6 +40,7 @@ class CommentSerializer(serializers.ModelSerializer):
             'updated_at', 'content', 'profile_image', 'comment_like_id',
             'comment_likes_count'
         ]
+
 
 class CommentDetailSerializer(CommentSerializer):
     post = serializers.ReadOnlyField(source='post.id')

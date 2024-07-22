@@ -5,6 +5,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .models import Comment
 from .serializers import CommentSerializer, CommentDetailSerializer
 
+
 class CommentList(generics.ListCreateAPIView):
 
     serializer_class = CommentSerializer
@@ -14,7 +15,7 @@ class CommentList(generics.ListCreateAPIView):
     ]
 
     queryset = Comment.objects.annotate(
-        comment_likes_count = Count('likes')
+        comment_likes_count=Count('likes')
     ).order_by('created_at')
     serializer_class = CommentSerializer
     filter_backends = [
@@ -26,7 +27,7 @@ class CommentList(generics.ListCreateAPIView):
         'post'
     ]
 
-    ordering_fields  = [
+    ordering_fields = [
         'comment_likes_count',
     ]
 
@@ -35,9 +36,8 @@ class CommentList(generics.ListCreateAPIView):
 
 
 class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
-    
     permission_classes = [IsOwnerOrReadOnly | IsAdmin]
     serializer_class = CommentDetailSerializer
     queryset = Comment.objects.annotate(
-        comment_likes_count = Count('likes')
+        comment_likes_count=Count('likes')
     ).order_by('created_at')
