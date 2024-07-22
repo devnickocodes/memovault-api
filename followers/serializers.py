@@ -5,6 +5,11 @@ from .models import Follower
 class FollowerSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
 
+
+    class Meta:
+        model = Follower
+        fields = ['id', 'owner', 'followed', 'created_at']
+
     def validate(self, data):
         if 'owner' not in data:
             data['owner'] = self.context['request'].user
@@ -13,9 +18,6 @@ class FollowerSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({'details': "A user cannot follow themselves."})
         return data
 
-    class Meta:
-        model = Follower
-        fields = ['id', 'owner', 'followed', 'created_at']
 
     def create(self, validated_data):
         try:

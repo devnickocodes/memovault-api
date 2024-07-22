@@ -1,6 +1,6 @@
 from django.db.models import Count
 from rest_framework import generics, permissions, filters
-from memovault_api.permissions import IsOwnerOrReadOnly
+from memovault_api.permissions import IsOwnerOrReadOnly, IsAdmin
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import Comment
 from .serializers import CommentSerializer, CommentDetailSerializer
@@ -36,7 +36,7 @@ class CommentList(generics.ListCreateAPIView):
 
 class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     
-    permission_classes = [IsOwnerOrReadOnly]
+    permission_classes = [IsOwnerOrReadOnly | IsAdmin]
     serializer_class = CommentDetailSerializer
     queryset = Comment.objects.annotate(
         comment_likes_count = Count('likes')

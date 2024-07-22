@@ -5,6 +5,7 @@ from likes.models import PostLike
 class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
+    is_admin = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     post_like_id = serializers.SerializerMethodField()
@@ -25,6 +26,9 @@ class PostSerializer(serializers.ModelSerializer):
             return post_like_id.id if post_like_id else None
         return None
 
+    def get_is_admin(self, obj):
+        request = self.context['request']
+        return request.user.is_staff
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -42,7 +46,7 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = [
-            'id', 'owner', 'is_owner', 'profile_id',
+            'id', 'owner', 'is_owner', 'is_admin', 'profile_id',
             'profile_image', 'created_at', 'updated_at',
             'title', 'content', 'image', 'post_like_id',
             'comments_count', 'post_likes_count'
