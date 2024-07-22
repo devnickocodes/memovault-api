@@ -26,7 +26,8 @@ class ProfileList(generics.ListAPIView):
     ]
 
     search_fields = [
-        'owner__username'
+        'owner__username',
+        'hobbies',
     ]
 
     ordering_fields  = [
