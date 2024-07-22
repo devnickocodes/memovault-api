@@ -6,10 +6,20 @@ class ProfileSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     follows_you = serializers.SerializerMethodField()
+    following_id = serializers.SerializerMethodField()
 
     def get_is_owner(self, obj):
         request = self.context.get('request')
         return request.user == obj.owner
+    
+    def get_following_id(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            following = Follower.objects.filter(
+                owner=user, followed=obj.owner
+            ).first()
+            return following.id if following else None
+        return None
 
     def get_follows_you(self, obj):
         request_user = self.context['request'].user
@@ -25,5 +35,5 @@ class ProfileSerializer(serializers.ModelSerializer):
         model = Profile
         fields = [
             'id', 'owner','is_owner', 'created_at', 'updated_at',
-            'name', 'hobbies', 'bio', 'image', 'follows_you'
+            'name', 'hobbies', 'bio', 'image', 'follows_you', 'following_id'
         ]
