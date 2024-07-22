@@ -48,6 +48,19 @@ class AdminReportList(generics.ListAPIView):
     serializer_class = ReportSerializer
     permission_classes = [IsAdmin]
     queryset = Report.objects.all()
+    filter_backends = [
+        DjangoFilterBackend,
+        filters.OrderingFilter,
+    ]
+    filterset_fields = [
+        'owner',
+        'post',
+        'reason',
+    ]
+    ordering_fields = [
+        'created_at',
+        '-created_at'
+    ]
 
 class AdminReportDetail(generics.RetrieveDestroyAPIView):
     serializer_class = ReportSerializer

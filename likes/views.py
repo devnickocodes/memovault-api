@@ -21,6 +21,7 @@ class PostLikeDetail(generics.RetrieveDestroyAPIView):
     queryset = PostLike.objects.all()
 
 
+
 class CommentLikeList(generics.ListCreateAPIView):
     queryset = CommentLike.objects.all()
     serializer_class = CommentLikeSerializer
