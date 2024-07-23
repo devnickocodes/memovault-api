@@ -5,7 +5,7 @@ from memovault_api.permissions import IsOwnerOrReadOnly
 
 class FollowerList(generics.ListCreateAPIView):
     """
-    API view to list all followers or create a new follower relationship.
+    List all followers or create a new follower relationship.
 
     This view provides two functionalities:
     - List all followers for both authenticated and unauthenticated users.
@@ -30,7 +30,7 @@ class FollowerList(generics.ListCreateAPIView):
 
 class FollowerDetail(generics.RetrieveDestroyAPIView):
     """
-    API view to retrieve or delete a specific follower relationship.
+    Retrieve or delete a specific follower relationship.
 
     This view provides two functionalities:
     - Retrieve the details of a specific follower relationship.

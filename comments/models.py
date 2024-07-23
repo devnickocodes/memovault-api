@@ -6,7 +6,14 @@ from posts.models import Post
 class Comment(models.Model):
     """
     Stores a single comment entry related to :model:`auth.User`.
-    And :model:`posts.Post`
+    And :model:`posts.Post`.
+
+    Attributes:
+        owner (ForeignKey): The user who made the comment.
+        post (ForeignKey): The post on which the comment was made.
+        created_at (DateTimeField): The timestamp when the comment was created.
+        updated_at (DateTimeField): The timestamp when the comment was last updated.
+        content (TextField): The content of the comment.
     """
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
