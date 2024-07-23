@@ -2,6 +2,21 @@ from rest_framework import serializers
 from .models import Report
 
 class ReportSerializer(serializers.ModelSerializer):
+    """
+    Serializer which handles the representation and validation of `Report` instances.
+
+    Attributes:
+        owner (ReadOnlyField): The username of the user who created the report.
+        post_title (ReadOnlyField): The title of the post being reported.
+
+    Methods:
+        validate: Ensures that a custom reason is provided if 'Other' is selected as the reason.
+        create: Creates a new `Report` instance with the validated data.
+        update: Updates an existing `Report` instance with the validated data.
+
+    Meta:
+        fields (list): The fields included in the serialized representation.
+    """
     owner = serializers.ReadOnlyField(source='owner.username')
     post_title = serializers.ReadOnlyField(source='post.title')
 
