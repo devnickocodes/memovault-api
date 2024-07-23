@@ -5,7 +5,30 @@ from posts.models import Post
 from .models import Report
 
 class ReportTests(APITestCase):
+    """
+    Test suite that covers various scenarios for the `Report` API,
+    including creation, retrieval, updating, and deletion of reports.
+    It also tests authentication and permissions for different types of users.
 
+    Methods:
+
+        setUp: Sets up the test environment by creating users, a test post, and authenticating the client.
+        
+        test_create_report_authenticated: Tests creating a report when the user is authenticated.
+        test_create_report_unauthenticated: Tests creating a report when the user is not authenticated.
+        
+        test_update_report_authenticated_owner: Tests updating a report by the owner of the report.
+        test_update_report_authenticated_non_owner: Tests updating a report by a user who is not the owner.
+        
+        test_delete_report_authenticated_owner: Tests deleting a report by the owner of the report.
+        test_delete_report_authenticated_non_owner: Tests deleting a report by a user who is not the owner.
+        
+        test_list_reports_admin_authenticated: Tests listing reports with admin authentication.
+        test_list_reports_admin_unauthenticated: Tests listing reports without authentication.
+        
+        test_retrieve_report_admin_authenticated: Tests retrieving a specific report with admin authentication.
+        test_retrieve_report_admin_unauthenticated: Tests retrieving a specific report without authentication.
+    """
     def setUp(self):
         self.user = User.objects.create_user(username='testuser', password='12345')
         self.admin = User.objects.create_user(username='admin', password='123456', is_staff=True)
