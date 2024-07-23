@@ -12,8 +12,8 @@ class FollowerList(generics.ListCreateAPIView):
     - Allows authenticated users to create a new follower relationship.
 
     Attributes:
-        serializer_class (Serializer): Specifies the serializer to use for the view, which is `FollowerSerializer`.
-        permission_classes (list): Specifies the permissions required to access the view. Uses `IsAuthenticatedOrReadOnly`.
+        serializer_class (Serializer): Specifies the serializer to use for the view.
+        permission_classes (list): Specifies the permissions required to access the view.
 
     Methods:
         get_queryset: Returns the queryset of all followers.

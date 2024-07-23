@@ -57,7 +57,7 @@ class CommentLikeList(generics.ListCreateAPIView):
     - Allows authenticated users to create a new `CommentLike` instance.
 
     Attributes:
-        serializer_class (Serializer): Specifies the serializer to use for the view, which is `CommentLikeSerializer`.
+        serializer_class (Serializer): Specifies the serializer to use for the view.
         permission_classes (list): Specifies the permissions required to access the view. Uses `IsAuthenticated`.
         queryset (QuerySet): The queryset of `CommentLike` instances to be used for the list view.
 
@@ -80,8 +80,8 @@ class CommentLikeDetail(generics.RetrieveDestroyAPIView):
     - Delete a `CommentLike` instance if the user has the required permissions.
 
     Attributes:
-        serializer_class (Serializer): Specifies the serializer to use for the view, which is `CommentLikeSerializer`.
-        permission_classes (list): Specifies the permissions required to access the view. Uses `IsOwnerOrReadOnly`.
+        serializer_class (Serializer): Specifies the serializer to use for the view.
+        permission_classes (list): Specifies the permissions required to access the view.
         queryset (QuerySet): The queryset of `CommentLike` instances to be used for the detail view.
     """
     permission_classes = [IsOwnerOrReadOnly]
