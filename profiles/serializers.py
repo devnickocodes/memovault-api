@@ -3,6 +3,26 @@ from .models import Profile
 from followers.models import Follower
 
 class ProfileSerializer(serializers.ModelSerializer):
+    """
+    Serializer which handles the representation and validation of `Profile` instances.
+
+    Attributes:
+        owner (ReadOnlyField): The username of the user to whom the profile belongs.
+        is_owner (SerializerMethodField): A boolean indicating if the requesting user is the owner of the profile.
+        follows_you (SerializerMethodField): A boolean indicating if the owner of the profile is following the requesting user.
+        following_id (SerializerMethodField): The ID of the follow relationship if the requesting user is following the profile's owner.
+        posts_count (ReadOnlyField): The number of posts made by the profile's owner.
+        followers_count (ReadOnlyField): The number of followers the profile's owner has.
+        following_count (ReadOnlyField): The number of users the profile's owner is following.
+
+    Methods:
+        get_is_owner: Determines if the requesting user is the owner of the profile.
+        get_following_id: Retrieves the ID of the follow relationship if the requesting user is following the profile's owner.
+        get_follows_you: Checks if the owner of the profile is following the requesting user.
+
+    Meta:
+        fields (list): A list of fields to include in the serialized output.
+    """
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     follows_you = serializers.SerializerMethodField()
