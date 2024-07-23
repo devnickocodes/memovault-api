@@ -1,7 +1,7 @@
 from django.db.models import Count
 from rest_framework import generics, permissions, filters
 from django_filters.rest_framework import DjangoFilterBackend
-from memovault_api.permissions import IsOwnerOrReadOnly
+from memovault_api.permissions import IsOwnerOrReadOnly, IsAdmin
 from .serializers import PostSerializer
 from .models import Post
 
@@ -44,7 +44,7 @@ class PostList(generics.ListCreateAPIView):
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
 
     serializer_class = PostSerializer
-    permission_classes = [IsOwnerOrReadOnly]
+    permission_classes = [IsOwnerOrReadOnly | IsAdmin]
     queryset = Post.objects.annotate(
         comments_count = Count('comment'),
         post_likes_count = Count('likes')
