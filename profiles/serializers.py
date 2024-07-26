@@ -19,6 +19,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         get_is_owner: Determines if the requesting user is the owner of the profile.
         get_following_id: Retrieves the ID of the follow relationship if the requesting user is following the profile's owner.
         get_follows_you: Checks if the owner of the profile is following the requesting user.
+        validate_image: Validates the profile image to ensure it adheres to size and dimension restrictions.
 
     Meta:
         fields (list): A list of fields to include in the serialized output.
@@ -34,7 +35,20 @@ class ProfileSerializer(serializers.ModelSerializer):
     def get_is_owner(self, obj):
         request = self.context.get('request')
         return request.user == obj.owner
-    
+
+    def validate_image(self, value):
+        if value.size > 2 * 1024 * 1024:
+            raise serializers.ValidationError('Image size larger than 2MB!')
+        if value.image.height > 4096:
+            raise serializers.ValidationError(
+                'Image height larger than 4096px!'
+            )
+        if value.image.width > 4096:
+            raise serializers.ValidationError(
+                'Image width larger than 4096px!'
+            )
+        return value
+
     def get_following_id(self, obj):
         user = self.context['request'].user
         if user.is_authenticated:
