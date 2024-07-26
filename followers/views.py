@@ -1,7 +1,7 @@
 from rest_framework import generics, permissions
+from memovault_api.permissions import IsOwnerOrReadOnly
 from .models import Follower
 from .serializers import FollowerSerializer
-from memovault_api.permissions import IsOwnerOrReadOnly
 
 class FollowerList(generics.ListCreateAPIView):
     """

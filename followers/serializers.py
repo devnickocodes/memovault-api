@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User
+from django.db import IntegrityError
 from .models import Follower
 
 class FollowerSerializer(serializers.ModelSerializer):
@@ -43,7 +43,7 @@ class FollowerSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         try:
             return super().create(validated_data)
-        except IntegrityError:
+        except IntegrityError as exc:
             raise serializers.ValidationError({
-                'detail': 'possible duplicate'
-            })
+                'detail': 'Possible duplicate'
+            }) from exc

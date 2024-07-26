@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from rest_framework.exceptions import ValidationError
 
 class Follower(models.Model):
     """
@@ -31,4 +32,4 @@ class Follower(models.Model):
 
     def __str__(self):
 
-        return f"{self.owner} {self.followed}" 
+        return f"{self.owner} {self.followed}"
