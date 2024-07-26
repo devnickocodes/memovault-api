@@ -1,7 +1,7 @@
 from django.db.models import Count
 from rest_framework import generics, permissions, filters
-from memovault_api.permissions import IsOwnerOrReadOnly, IsAdmin
 from django_filters.rest_framework import DjangoFilterBackend
+from memovault_api.permissions import IsOwnerOrReadOnly, IsAdmin
 from .models import Comment
 from .serializers import CommentSerializer, CommentDetailSerializer
 
