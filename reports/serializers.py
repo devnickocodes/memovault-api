@@ -39,9 +39,15 @@ class ReportSerializer(serializers.ModelSerializer):
         return data
 
     def create(self, validated_data):
+        """
+        Creates a new `Report` instance with the validated data.
+        """
         return Report.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
+        """
+        Updates an existing `Report` instance with the validated data.
+        """
         instance.post = validated_data.get('post', instance.post)
         instance.reason = validated_data.get('reason', instance.reason)
         instance.custom_reason = validated_data.get('custom_reason',
