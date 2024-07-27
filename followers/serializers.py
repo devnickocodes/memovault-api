@@ -37,6 +37,11 @@ class FollowerSerializer(serializers.ModelSerializer):
         fields = ['id', 'owner', 'followed', 'created_at']
 
     def validate(self, data):
+        """
+        Ensures that a user cannot follow themselves and
+        assigns the current request user as the`owner` if
+        not already provided.
+        """
         if 'owner' not in data:
             data['owner'] = self.context['request'].user
 
@@ -47,6 +52,10 @@ class FollowerSerializer(serializers.ModelSerializer):
         return data
 
     def create(self, validated_data):
+        """
+        Handles creation of a follow relationship and raises a
+        validation error if a duplicate entry is detected.
+        """
         try:
             return super().create(validated_data)
         except IntegrityError as exc:
