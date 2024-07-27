@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django.db import IntegrityError
 from .models import PostLike, CommentLike
 
 class PostLikeSerializer(serializers.ModelSerializer):
@@ -23,8 +24,8 @@ class PostLikeSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         try:
             return super().create(validated_data)
-        except IntegrityError:
-            raise serializers.ValidationError({'detail': 'possible duplicate'})
+        except IntegrityError as exc:
+            raise serializers.ValidationError({'detail': 'possible duplicate'}) from exc
 
 class CommentLikeSerializer(serializers.ModelSerializer):
     """
@@ -48,5 +49,5 @@ class CommentLikeSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         try:
             return super().create(validated_data)
-        except IntegrityError:
-            raise serializers.ValidationError({'detail': 'possible duplicate'})
+        except IntegrityError as exc:
+            raise serializers.ValidationError({'detail': 'possible duplicate'}) from exc

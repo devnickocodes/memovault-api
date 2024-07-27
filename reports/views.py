@@ -41,10 +41,7 @@ class ReportListCreate(generics.ListCreateAPIView):
     ]
 
     def get_queryset(self):
-        if self.request.user.is_authenticated:
-            return Report.objects.filter(owner=self.request.user)
-        else:
-            raise NotAuthenticated("You must be logged in to view reports.")
+        return Report.objects.filter(owner=self.request.user)
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
@@ -70,10 +67,8 @@ class ReportDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [permissions.IsAuthenticated, IsOwnerOrReadOnly]
 
     def get_queryset(self):
-        if self.request.user.is_authenticated:
-            return Report.objects.filter(owner=self.request.user)
-        else:
-            raise NotAuthenticated("You must be logged in to access this report.")
+        return Report.objects.filter(owner=self.request.user)
+
 
 
 class AdminReportList(generics.ListAPIView):
