@@ -2,24 +2,37 @@ from rest_framework import serializers
 from followers.models import Follower
 from .models import Profile
 
+
 class ProfileSerializer(serializers.ModelSerializer):
     """
-    Serializer which handles the representation and validation of `Profile` instances.
+    Serializer which handles the representation and validation of
+                                              `Profile` instances.
 
     Attributes:
-        owner (ReadOnlyField): The username of the user to whom the profile belongs.
-        is_owner (SerializerMethodField): A boolean indicating if the requesting user is the owner of the profile.
-        follows_you (SerializerMethodField): A boolean indicating if the owner of the profile is following the requesting user.
-        following_id (SerializerMethodField): The ID of the follow relationship if the requesting user is following the profile's owner.
-        posts_count (ReadOnlyField): The number of posts made by the profile's owner.
-        followers_count (ReadOnlyField): The number of followers the profile's owner has.
-        following_count (ReadOnlyField): The number of users the profile's owner is following.
+        owner (ReadOnlyField): The username of the user to whom the
+                                                    profile belongs.
+        is_owner (SerializerMethodField): A boolean indicating if the
+                          requesting user is the owner of the profile.
+        follows_you (SerializerMethodField): A boolean indicating if the owner
+                               of the profile is following the requesting user.
+        following_id (SerializerMethodField): The ID of the follow relationship
+                    if the requesting user is following the profile's owner.
+        posts_count (ReadOnlyField): The number of posts made by the
+                                                     profile's owner.
+        followers_count (ReadOnlyField): The number of followers the
+                                                 profile's owner has.
+        following_count (ReadOnlyField): The number of users the profile's
+                                                        owner is following.
 
     Methods:
-        get_is_owner: Determines if the requesting user is the owner of the profile.
-        get_following_id: Retrieves the ID of the follow relationship if the requesting user is following the profile's owner.
-        get_follows_you: Checks if the owner of the profile is following the requesting user.
-        validate_image: Validates the profile image to ensure it adheres to size and dimension restrictions.
+        get_is_owner: Determines if the requesting user is the owner
+                                                      of the profile.
+        get_following_id: Retrieves the ID of the follow relationship if
+                    the requesting user is following the profile's owner.
+        get_follows_you: Checks if the owner of the profile is following the
+                                                             requesting user.
+        validate_image: Validates the profile image to ensure it adheres to
+                                            size and dimension restrictions.
 
     Meta:
         fields (list): A list of fields to include in the serialized output.
@@ -59,7 +72,8 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     def get_following_id(self, obj):
         """
-        Retrieves the ID of the follower relationship for the requesting user with the owner of the object.
+        Retrieves the ID of the follower relationship for the requesting
+        user with the owner of the object.
         """
         user = self.context['request'].user
         if user.is_authenticated:
@@ -85,7 +99,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = [
-            'id', 'owner','is_owner', 'created_at', 'updated_at',
+            'id', 'owner', 'is_owner', 'created_at', 'updated_at',
             'name', 'hobbies', 'bio', 'image', 'follows_you', 'following_id',
             'posts_count', 'followers_count', 'following_count'
         ]

@@ -11,16 +11,23 @@ class ProfileList(generics.ListAPIView):
     List all profiles or filter/search through existing profiles.
 
     This view provides two functionalities:
-    - List all profiles for authenticated users, with the ability to filter, search, and order the results.
-    - Allows querying of profiles based on owner, hobbies as well as posts, followers and following
+    - List all profiles for authenticated users, with the ability
+                        to filter, search, and order the results.
+    - Allows querying of profiles based on owner, hobbies as well as
+                                      posts, followers and following
 
     Attributes:
-        serializer_class (ProfileSerializer): Specifies the serializer to use for the view.
-        queryset (QuerySet): The queryset used to retrieve profiles, annotated with counts of posts, followers, and following, and ordered by creation date.
-        filter_backends (list): Specifies the filter backends used for filtering, searching, and ordering profiles.
+        serializer_class (ProfileSerializer): Specifies the serializer to use
+                                                                 for the view.
+        queryset (QuerySet): The queryset used to retrieve profiles, annotated
+                                with counts of posts, followers, and following,
+                                and ordered by creation date.
+        filter_backends (list): Specifies the filter backends used for
+                           filtering, searching, and ordering profiles.
         filterset_fields (list): The fields used for filtering profiles.
         search_fields (list): The fields used for searching profiles.
-        ordering_fields (list): The fields that can be used for ordering profiles.
+        ordering_fields (list): The fields that can be used for
+                                              ordering profiles.
     """
     serializer_class = ProfileSerializer
     queryset = Profile.objects.annotate(
@@ -44,7 +51,7 @@ class ProfileList(generics.ListAPIView):
         'hobbies',
     ]
 
-    ordering_fields  = [
+    ordering_fields = [
         'posts_count',
         'followers_count',
         'following_count',
@@ -59,12 +66,16 @@ class ProfileDetail(generics.RetrieveUpdateAPIView):
 
     This view provides two functionalities:
     - Retrieve detailed information about a specific profile.
-    - Allows updating of the profile if the authenticated user has the appropriate permissions.
+    - Allows updating of the profile if the authenticated user has the
+                                               appropriate permissions.
 
     Attributes:
-        permission_classes (list): Specifies the permissions required to update the profile.
-        queryset (QuerySet): The queryset used to retrieve and annotate a profile with counts of posts, followers, and following.
-        serializer_class (ProfileSerializer): Specifies the serializer to use for the view.
+        permission_classes (list): Specifies the permissions
+                                             required to update the profile.
+        queryset (QuerySet): The queryset used to retrieve and annotate a
+                        profile with counts of posts, followers, and following.
+        serializer_class (ProfileSerializer): Specifies the serializer to use
+                                                                 for the view.
     """
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Profile.objects.annotate(
