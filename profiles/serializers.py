@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from .models import Profile
 from followers.models import Follower
+from .models import Profile
 
 class ProfileSerializer(serializers.ModelSerializer):
     """
@@ -33,10 +33,18 @@ class ProfileSerializer(serializers.ModelSerializer):
     following_count = serializers.ReadOnlyField()
 
     def get_is_owner(self, obj):
+        """
+        Determines if the requesting user is the owner of the profile.
+        """
         request = self.context.get('request')
         return request.user == obj.owner
 
     def validate_image(self, value):
+        """
+        Ensures that a user cannot follow themselves and
+        assigns the current request user as the`owner` if
+        not already provided.
+        """
         if value.size > 2 * 1024 * 1024:
             raise serializers.ValidationError('Image size larger than 2MB!')
         if value.image.height > 4096:
@@ -50,6 +58,9 @@ class ProfileSerializer(serializers.ModelSerializer):
         return value
 
     def get_following_id(self, obj):
+        """
+        Retrieves the ID of the follower relationship for the requesting user with the owner of the object.
+        """
         user = self.context['request'].user
         if user.is_authenticated:
             following = Follower.objects.filter(
@@ -59,6 +70,9 @@ class ProfileSerializer(serializers.ModelSerializer):
         return None
 
     def get_follows_you(self, obj):
+        """
+        Checks if the requesting user is followed by the owner of the object.
+        """
         request_user = self.context['request'].user
         if request_user.is_authenticated:
             following = Follower.objects.filter(
