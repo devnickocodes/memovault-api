@@ -10,17 +10,20 @@ class Profile(models.Model):
     Attributes:
         owner (ForeignKey): The owner of the profile.
         created_at (DateTimeField): The timestamp when the profile was created.
-        updated_at (DateTimeField): The timestamp when the profile was last updated.
+        updated_at (DateTimeField): The timestamp when the profile was
+                                                          last updated.
         name (CharField): The name of the user (optional).
         hobbies (CharField): The hobbies of the user (optional).
         bio (TextField): A short biography of the user (optional).
         image (ImageField): Profile image of the user (optional).
-    
+
     Methods:
-        create_profile: Signal handler function that creates a profile when a new user is created.
-    
+        create_profile: Signal handler function that creates a profile
+                                            when a new user is created.
+
     Meta:
-        ordering (list): Orders profiles by the `created_at` field in descending order.
+        ordering (list): Orders profiles by the `created_at`
+                                  field in descending order.
     """
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -39,9 +42,13 @@ class Profile(models.Model):
         return f"{self.owner}'s Profile"
 
 
-
 def create_profile(sender, instance, created, **kwargs):
+    """
+    Signal handler function to automatically create a `Profile` instance
+    whenever a new `User` instance is created.
+    """
     if created:
         Profile.objects.create(owner=instance)
 
-post_save.connect(create_profile, sender=User) 
+
+post_save.connect(create_profile, sender=User)
