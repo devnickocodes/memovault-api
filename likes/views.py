@@ -1,7 +1,8 @@
 from rest_framework import generics, permissions
+from memovault_api.permissions import IsOwnerOrReadOnly
 from .models import PostLike, CommentLike
 from .serializers import PostLikeSerializer, CommentLikeSerializer
-from memovault_api.permissions import IsOwnerOrReadOnly
+
 
 
 class PostLikeList(generics.ListCreateAPIView):

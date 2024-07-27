@@ -3,4 +3,3 @@ from .models import PostLike, CommentLike
 
 admin.site.register(PostLike)
 admin.site.register(CommentLike)
-
