@@ -14,7 +14,6 @@ class Comment(models.Model):
         created_at (DateTimeField): The timestamp when the comment was created.
         updated_at (DateTimeField): The timestamp when the comment was last updated.
         content (TextField): The content of the comment.
-    
     Meta:
         ordering (list): Orders records by the `created_at` field in descending order.
     """

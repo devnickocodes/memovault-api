@@ -21,6 +21,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
     Methods:
         get_is_owner: Returns a boolean indicating whether the request user is the owner of the comment.
+        get_is_admin: Returns a boolean indicating whether the request user is an admin.
         get_comment_like_id: Returns the ID of the comment like if the request user has liked the comment.
         get_created_at: Returns the creation timestamp of the comment.
         get_updated_at: Returns the last update timestamp of the comment.
@@ -37,14 +38,23 @@ class CommentSerializer(serializers.ModelSerializer):
     comment_likes_count = serializers.ReadOnlyField()
 
     def get_is_owner(self, obj):
+        """
+        Returns a boolean indicating whether the request user is the owner of the comment.
+        """
         request = self.context['request']
         return request.user == obj.owner
 
     def get_is_admin(self, obj):
+        """
+        Returns a boolean indicating whether the request user is an admin.
+        """
         request = self.context['request']
         return request.user.is_staff
 
     def get_comment_like_id(self, obj):
+        """
+        Returns the ID of the comment like if the request user has liked the comment.
+        """
         user = self.context['request'].user
         if user.is_authenticated:
             comment_like_id = CommentLike.objects.filter(
@@ -54,9 +64,15 @@ class CommentSerializer(serializers.ModelSerializer):
         return None
 
     def get_created_at(self, obj):
+        """
+        Returns the creation timestamp of the comment in a human-readable format.
+        """
         return naturaltime(obj.created_at)
 
     def get_updated_at(self, obj):
+        """
+        Returns the last update timestamp of the comment in a human-readable format.
+        """
         return naturaltime(obj.updated_at)
 
     class Meta:
