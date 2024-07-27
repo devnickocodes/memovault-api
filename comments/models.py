@@ -12,10 +12,12 @@ class Comment(models.Model):
         owner (ForeignKey): The user who made the comment.
         post (ForeignKey): The post on which the comment was made.
         created_at (DateTimeField): The timestamp when the comment was created.
-        updated_at (DateTimeField): The timestamp when the comment was last updated.
+        updated_at (DateTimeField): The timestamp when the comment
+                                                  was last updated.
         content (TextField): The content of the comment.
     Meta:
-        ordering (list): Orders records by the `created_at` field in descending order.
+        ordering (list): Orders records by the `created_at` field
+                                              in descending order.
     """
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
