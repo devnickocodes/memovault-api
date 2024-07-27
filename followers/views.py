@@ -3,6 +3,7 @@ from memovault_api.permissions import IsOwnerOrReadOnly
 from .models import Follower
 from .serializers import FollowerSerializer
 
+
 class FollowerList(generics.ListCreateAPIView):
     """
     List all followers or create a new follower relationship.
@@ -12,12 +13,15 @@ class FollowerList(generics.ListCreateAPIView):
     - Allows authenticated users to create a new follower relationship.
 
     Attributes:
-        serializer_class (Serializer): Specifies the serializer to use for the view.
-        permission_classes (list): Specifies the permissions required to access the view.
+        serializer_class (Serializer): Specifies the
+                      serializer to use for the view.
+        permission_classes (list): Specifies the permissions
+                                 required to access the view.
 
     Methods:
         get_queryset: Returns the queryset of all followers.
-        perform_create: Associates the created follower relationship with the authenticated user as the owner.
+        perform_create: Associates the created follower relationship
+                            with the authenticated user as the owner.
     """
     serializer_class = FollowerSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
@@ -28,6 +32,7 @@ class FollowerList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
+
 class FollowerDetail(generics.RetrieveDestroyAPIView):
     """
     Retrieve or delete a specific follower relationship.
@@ -37,9 +42,12 @@ class FollowerDetail(generics.RetrieveDestroyAPIView):
     - Delete a specific follower relationship.
 
     Attributes:
-        queryset (QuerySet): Specifies the queryset to use for retrieving the follower relationships.
-        serializer_class (Serializer): Specifies the serializer to use for the view, which is `FollowerSerializer`.
-        permission_classes (list): Specifies the permissions required to access the view. Uses `IsOwnerOrReadOnly`.
+        queryset (QuerySet): Specifies the queryset to use for retrieving
+                                               the follower relationships.
+        serializer_class (Serializer): Specifies the serializer to use for
+                                   the view, which is `FollowerSerializer`.
+        permission_classes (list): Specifies the permissions required to access
+                                            the view. Uses `IsOwnerOrReadOnly`.
     """
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Follower.objects.all()
