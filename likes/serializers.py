@@ -25,6 +25,11 @@ class PostLikeSerializer(serializers.ModelSerializer):
         fields = ['id', 'created_at', 'owner', 'post']
 
     def create(self, validated_data):
+        """
+        Handles the creation of a new `PostLike`
+        instance, and raises a validation error if a
+        duplicate entry is detected.
+        """
         try:
             return super().create(validated_data)
         except IntegrityError as exc:
@@ -55,6 +60,11 @@ class CommentLikeSerializer(serializers.ModelSerializer):
         fields = ['id', 'created_at', 'owner', 'comment']
 
     def create(self, validated_data):
+        """
+        Handles the creation of a new `CommentLike`
+        instance, and raises a validation error if a
+        duplicate entry is detected.
+        """
         try:
             return super().create(validated_data)
         except IntegrityError as exc:
