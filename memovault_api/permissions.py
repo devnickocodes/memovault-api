@@ -13,10 +13,11 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
 
 class IsAdmin(permissions.BasePermission):
     """
-    Allows access only to admin users.
+    Allows admin users to delete posts.
     """
-    def has_permission(self, request, view):
-        return request.user and request.user.is_staff
-
     def has_object_permission(self, request, view, obj):
-        return request.user and request.user.is_staff
+        if request.method in permissions.SAFE_METHODS:
+            return True
+        if request.method == 'DELETE' and request.user.is_staff:
+            return True
+        return False
