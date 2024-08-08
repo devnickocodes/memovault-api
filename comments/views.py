@@ -23,7 +23,9 @@ class CommentList(generics.ListCreateAPIView):
         Allows authenticated users to create comments and read-only access
                                                  for unauthenticated users.
         queryset (QuerySet): The queryset of `Comment` instances with an
-            annotation for comment likes count and ordered by creation date.
+                             annotation for comment likes count, ordered
+                             by creation date in descending order
+                             (newest first).
         filter_backends (list): List of filter backends to apply
                                       for filtering and ordering.
         filterset_fields (list): Fields that can be filtered using
@@ -43,7 +45,7 @@ class CommentList(generics.ListCreateAPIView):
 
     queryset = Comment.objects.annotate(
         comment_likes_count=Count('likes')
-    ).order_by('created_at')
+    ).order_by('-created_at')
     serializer_class = CommentSerializer
     filter_backends = [
         filters.OrderingFilter,
@@ -77,11 +79,13 @@ class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
         permission_classes (list): A list of permission classes
                                       to enforce access control.
         Allows only the owner or the admin to update or delete the comment.
-        queryset (QuerySet): The queryset of `Comment` instances with
-               an annotation for comment likes count, ordered by creation date.
+        queryset (QuerySet): The queryset of `Comment` instances with an
+                             annotation for comment likes count, ordered
+                             by creation date in descending order
+                             (newest first).
     """
     permission_classes = [IsOwnerOrReadOnly | IsAdmin]
     serializer_class = CommentDetailSerializer
     queryset = Comment.objects.annotate(
         comment_likes_count=Count('likes')
-    ).order_by('created_at')
+    ).order_by('-created_at')

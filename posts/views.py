@@ -38,7 +38,7 @@ class PostList(generics.ListCreateAPIView):
     queryset = Post.objects.annotate(
         comments_count=Count('comment'),
         post_likes_count=Count('likes')
-    ).order_by('created_at')
+    ).order_by('-created_at')
     filter_backends = [
             filters.OrderingFilter,
             filters.SearchFilter,
@@ -81,11 +81,12 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
         permission_classes (list): Specifies the permissions required to
                                                          access the view.
         queryset (QuerySet): The queryset used to retrieve posts, annotated
-                 with comment and like counts, and ordered by creation date.
+                             with comment and like counts, and ordered by 
+                             creation date in descending order (newest first).
     """
     serializer_class = PostSerializer
     permission_classes = [IsOwnerOrReadOnly | IsAdmin]
     queryset = Post.objects.annotate(
         comments_count=Count('comment'),
         post_likes_count=Count('likes')
-    ).order_by('created_at')
+    ).order_by('-created_at')
