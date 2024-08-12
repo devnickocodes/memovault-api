@@ -38,7 +38,7 @@ class PostList(generics.ListCreateAPIView):
     queryset = Post.objects.annotate(
         comments_count=Count('comment'),
         post_likes_count=Count('likes')
-    ).order_by('created_at')
+    ).order_by('-created_at')
     filter_backends = [
             filters.OrderingFilter,
             filters.SearchFilter,
@@ -89,4 +89,4 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.annotate(
         comments_count=Count('comment'),
         post_likes_count=Count('likes')
-    ).order_by('created_at')
+    ).order_by('-created_at')
