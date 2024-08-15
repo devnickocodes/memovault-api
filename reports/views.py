@@ -1,7 +1,9 @@
 from rest_framework import generics, permissions, filters
+from rest_framework.exceptions import PermissionDenied
 from django_filters.rest_framework import DjangoFilterBackend
 from memovault_api.permissions import IsAdmin, IsOwnerOrReadOnly
 from .models import Report
+from posts.models import Post
 from .serializers import ReportSerializer
 
 
@@ -53,6 +55,9 @@ class ReportListCreate(generics.ListCreateAPIView):
         return Report.objects.filter(owner=self.request.user)
 
     def perform_create(self, serializer):
+        post_id = self.request.data.get('post')
+        if self.request.user == Post.objects.get(id=post_id).owner:
+            raise PermissionDenied("You cannot report your own post.")
         serializer.save(owner=self.request.user)
 
 
