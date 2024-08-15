@@ -56,7 +56,7 @@ class CommentSerializer(serializers.ModelSerializer):
         request = self.context['request']
         return request.user == obj.owner
 
-    def get_is_admin(self, obj):
+    def get_is_admin(self):
         """
         Returns a boolean indicating whether the request user is an admin.
         """
