@@ -22,11 +22,26 @@ class ReportSerializer(serializers.ModelSerializer):
     """
     owner = serializers.ReadOnlyField(source='owner.username')
     post_title = serializers.ReadOnlyField(source='post.title')
+    is_owner = serializers.SerializerMethodField()
+    is_admin = serializers.SerializerMethodField()
 
     class Meta:
         model = Report
-        fields = ['id', 'owner', 'post', 'post_title', 'reason',
+        fields = ['id', 'owner', 'is_owner', 'is_admin', 'post', 'post_title', 'reason',
                   'custom_reason', 'created_at', 'updated_at']
+    def get_is_owner(self, obj):
+        """
+        Determines if the requesting user is the owner of the reported post.
+        """
+        request = self.context['request']
+        return request.user == obj.post.owner
+
+    def get_is_admin(self, obj):
+        """
+        Determines if the requesting user is an admin.
+        """
+        request = self.context['request']
+        return request.user.is_staff
 
     def validate(self, data):
         """
