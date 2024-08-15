@@ -62,7 +62,7 @@ class PostSerializer(serializers.ModelSerializer):
             return post_like_id.id if post_like_id else None
         return None
 
-    def get_is_admin(self):
+    def get_is_admin(self, obj):
         """
         Determines if the requesting user is an admin.
         """
