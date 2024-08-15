@@ -7,11 +7,11 @@ class CurrentUserSerializer(UserDetailsSerializer):
     profile_image = serializers.ReadOnlyField(source='profile.image.url')
     is_admin = serializers.SerializerMethodField()
 
+    def get_is_admin(self, obj):
+
+        return obj.is_staff
+
     class Meta(UserDetailsSerializer.Meta):
         fields = UserDetailsSerializer.Meta.fields + (
             'is_admin', 'profile_id', 'profile_image'
         )
-        
-        def get_is_admin(self, obj):
-
-            return obj.is_staff
