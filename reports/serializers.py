@@ -34,7 +34,7 @@ class ReportSerializer(serializers.ModelSerializer):
         Determines if the requesting user is the owner of the reported post.
         """
         request = self.context['request']
-        return request.user == obj.post.owner
+        return request.user == obj.owner
 
     def get_is_admin(self, obj):
         """
