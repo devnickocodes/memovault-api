@@ -32,7 +32,7 @@ class PostSerializer(serializers.ModelSerializer):
                                                          user, if it exists.
         get_is_admin: Returns True if the requesting user is an admin.
         validate_image: Validates the image file to ensure it meets specific
-                                                 size and dimension criteria.
+                                                 size criteria.
     """
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
@@ -71,18 +71,10 @@ class PostSerializer(serializers.ModelSerializer):
 
     def validate_image(self, value):
         """
-        Validates the image file for size and dimensions.
+        Validates the image file.
         """
         if value.size > 2 * 1024 * 1024:
             raise serializers.ValidationError('Image size larger than 2MB!')
-        if value.image.height > 4096:
-            raise serializers.ValidationError(
-                'Image height larger than 4096px!'
-            )
-        if value.image.width > 4096:
-            raise serializers.ValidationError(
-                'Image width larger than 4096px!'
-            )
         return value
 
     class Meta:

@@ -125,7 +125,7 @@ class AdminReportList(generics.ListAPIView):
     ]
 
 
-class AdminReportDetail(generics.RetrieveUpdateDestroyAPIView):
+class AdminReportDetail(generics.RetrieveDestroyAPIView):
     """
     Retrieve or delete a specific report for administrators.
 
