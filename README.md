@@ -2,7 +2,8 @@
 
 ## Project Goals
 
-MemoVault is a social media backend API that allows users to register, log in, create posts, follow/unfollow other users, like comments and posts as well as comment on posts, manage their profiles, report posts as well as manage their reports. This project is designed to be the foundation for a social media platform. 
+MemoVault is a social media backend API that allows users to register, log in, create posts, follow/unfollow other users, like comments and posts as well as comment on posts, manage their profiles, report posts as well as manage their reports. This project is designed to be the foundation for a social media platform. The API is also used for the 
+[MemoVault React Web App](https://github.com/devnickocodes/memovault-app)
 
 ## Planning
 
@@ -250,3 +251,13 @@ A powerful, user-friendly HTTP client for Python
 ## Testing
 
 You can find the testing and validation [here](TESTING.md).
+
+## Bugs
+
+- When trying to implement validation in the serializer for the followers app that a user can't follow themselves I got a KeyError, because the 'owner' key was missing.
+- FIX: The issue was fixed by adding a check that ensures that the owner field is present in the input data. If it is missing, it sets the owner to the user making the request
+  
+    ```python
+    if 'owner' not in data:
+        data['owner'] = self.context['request'].user
+    ```
