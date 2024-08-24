@@ -136,12 +136,14 @@ RESULT: PASS
 
 - Unauthenticated users cannot send PUT requests to this endpoint.
 
-SCREENSHOT N/A
+Screenshot: N/A   
+
 RESULT: PASS
 
 - An authenticated user that is not the owner or the admin cannot send a PUT request to this endpoint.
 
-SCREENSHOT N/A
+Screenshot: N/A   
+
 RESULT: PASS
 
 - An authenticated user that is both the owner and an admin can send a PUT request to this endpoint being able to update one or both of the `title` and `content` fields and optionally the image field.
@@ -191,5 +193,53 @@ JSON SENT:
 
 
 ![test-13](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-13.png)
+
+RESULT: PASS
+
+### /posts/id - DELETE
+
+- An unauthenticated user cannot send a DELETE request to this endpoint.
+
+Screenshot: N/A 
+
+RESULT: PASS  
+
+- An authenticated user that is not the owner or the admin cannot send a DELETE request to this endpoint.
+
+Screenshot: N/A 
+
+RESULT: PASS  
+
+
+- An authenticated user that is both the owner and an admin can send a DELETE request to this endpoint.
+
+
+![test-14](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-14.png)
+
+
+RESULT: PASS
+
+
+- An authenticated user that is the owner but not an admin can send a DELETE request to this endpoint
+
+
+![test-15](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-15.png)
+
+RESULT: PASS
+
+- An authenticated user that is not the owner but is an admin can send a DELETE request to this endpoint
+
+
+![test-16](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-16.png)
+
+RESULT: PASS
+
+### /posts/id/ GET - 404 Not Found
+
+Any user trying to find a post that doesn't exist, a 404 Not Found should be returned.
+
+
+![test-17](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-17.png)
+
 
 RESULT: PASS
