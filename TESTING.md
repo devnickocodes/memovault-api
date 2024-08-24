@@ -18,7 +18,7 @@ Please note that the value for `profile_image` and `image` will be the cloudinar
 
 The values for `is_owner` and `is_admin` should be `false` for the unauthenticated user.
 
-![test-1]()
+![test-1](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-1.png)
 
 RESULT: PASS
 
@@ -27,7 +27,7 @@ RESULT: PASS
 
 The value of the `post_like_id` field should be set to the id of the post like if the request user has liked the post.
 
-![test-44]()
+![test-44](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-44.png)
 
 RESULT: PASS
 
@@ -46,7 +46,7 @@ Please note that the value of `image` will be the cloudinary url to which the im
 }
 ```
 
-![test-2]()
+![test-2](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-2.png)
 
 Please note now that since the user is authenticated, the owner of the post as well as being the admin both values for `is_owner` and `is_admin` are set to `true` and the `post_like_id` should remain `null` as the admin hasn't liked the post.
 
@@ -66,7 +66,7 @@ When the authenticated user tries to send a POST request to the endpoint with ei
 }
 ```
 
-![test-3]()
+![test-3](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-3.png)
 
 
 RESULT: PASS
@@ -85,7 +85,7 @@ The `image`'s size is greater than the permitted.
 }
 ```
 
-![test-5]()
+![test-5](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-5.png)
 
 RESULT: PASS
 
@@ -98,7 +98,7 @@ When an unauthenticated user sends a GET request to this endpoint, details for t
 `is_owner` and `is_admin` should be set to `false`
 
 
-![test-7]()
+![test-7](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-7.png)
 
 RESULT: PASS
 
@@ -108,7 +108,7 @@ When an authenticated user that is the owner but not an admin sends a GET reques
 `is_owner` should be set to `true` and `is_admin` should be set to `false`
 
 
-![test-8]()
+![test-8](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-8.png)
 
 RESULT: PASS
 
@@ -118,7 +118,7 @@ When an authenticated user that is not the owner but is an admin sends a GET req
 `is_owner` should be set to `false` and `is_admin` should be set to `true`
 
 
-![test-9]()
+![test-9](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-9.png)
 
 RESULT: PASS
 
@@ -127,14 +127,7 @@ When an authenticated user that is both the owner and an admin sends a GET reque
 `is_owner` should be set to `true` and `is_admin` should be set to `true`
 
 
-![test-10]()
+![test-10](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-10.png)
 
 RESULT: PASS
 
-#### /posts/<id:int>/ - GET 
-
-The value of the `post_like_id` field should be set to the id of the post like if the request user has liked the post.
-
-SCREENSHOT test-45
-
-RESULT: PASS
