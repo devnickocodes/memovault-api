@@ -361,3 +361,79 @@ JSON SENT:
 ![test-20](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-20.png)
 
 RESULT: PASS
+
+
+#### /comments/id - PUT
+
+
+- Unauthenticated users cannot send PUT requests to this endpoint.
+
+Screenshot: N/A  
+
+RESULT: PASS
+
+#### /comments/id - PUT
+
+
+- An authenticated user that is not the owner or the admin cannot send a PUT request to this endpoint.
+
+Screenshot: N/A  
+
+RESULT: PASS
+
+#### /comments/id - PUT
+
+- An authenticated user that is both the owner and an admin can send a PUT request to this endpoint being able to update the `content` field.
+
+
+JSON Sent:
+
+```
+{
+    "post": "1",
+    "content": "Your first post is awesome! Really well done!",
+}
+```
+
+![test-27](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-27.png)
+
+RESULT: PASS
+
+#### /comments/id - PUT
+
+
+An authenticated user that is the owner but not an admin can send a PUT request to this endpoint being able to update the `content` field.
+
+
+JSON Sent:
+
+```
+{
+    "post": "1",
+    "content": "Amazing post, really!",
+}
+```
+
+![test-28](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-28.png)
+
+RESULT: PASS
+
+
+#### /comments/id - PUT
+
+
+An authenticated user that is not the owner but is an admin can send a PUT request to this endpoint being able to update the `content` field.
+
+
+JSON Sent:
+
+```
+{
+    "post": "1",
+    "content": "Amazing post!",
+}
+```
+
+![test-29](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-29.png)
+
+RESULT: PASS
