@@ -81,7 +81,7 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
         permission_classes (list): Specifies the permissions required to
                                                          access the view.
         queryset (QuerySet): The queryset used to retrieve posts, annotated
-                             with comment and like counts, and ordered by 
+                             with comment and like counts, and ordered by
                              creation date in descending order (newest first).
     """
     serializer_class = PostSerializer

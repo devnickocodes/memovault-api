@@ -1149,7 +1149,7 @@ Python validation was perfomed using [CI Python Linter](https://pep8ci.herokuapp
 
 ![Likes App - views.py](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/likes_views.py_validation.png)
 
-### memovault_api Python Validation
+### Memovault_Api Python Validation
 
 #### permissions.py
 
@@ -1170,3 +1170,26 @@ Python validation was perfomed using [CI Python Linter](https://pep8ci.herokuapp
 #### views.py
 
 ![memovault_api App - views.py](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/memovault_api_views.py_validation.png)
+
+
+### Posts App Python Validation
+
+#### admin.py
+
+![Posts App - admin.py](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/posts_admin.py_validation.png)
+
+#### models.py
+
+![Posts App - models.py](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/posts_models.py_validation.png)
+
+#### serializers.py
+
+![Posts App - serializers.py](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/posts_serializers.py_validation.png)
+
+#### urls.py
+
+![Posts App - urls.py](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/posts_urls.py_validation.png)
+
+#### views.py
+
+![Posts App - views.py](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/posts_views.py_validation.png)
