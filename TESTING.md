@@ -546,6 +546,8 @@ When a user sends a POST request to this endpoint and the user already likes the
 RESULT: PASS
 
 
+#### /like/post/ PUT - N/A
+
 #### /like/post/<id:int>/ DELETE
 
 
@@ -610,6 +612,7 @@ When a user sends a POST request to this endpoint and the user already likes the
 
 RESULT: PASS
 
+#### /like/comment/ PUT - N/A
 
 #### /like/comment/<id:int>/ DELETE
 
@@ -677,8 +680,12 @@ Here Norm is not following admin but admin is following norm
 
 RESULT: PASS
 
+#### /profiles/ - POST - N/A
 
-### /profiles/<id:int>/ - PUT
+The creation a profile happens as a result of a handler function that automatically creates a `Profile` instance whenever a new `User` instance is created.
+
+
+#### /profiles/<id:int>/ - PUT
 
 
 - Unauthenticated users cannot send PUT requests to this endpoint.
@@ -948,5 +955,27 @@ An authenticated user that is an admin can send GET requests to this endpoint, d
 
 
 ![test-70](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-70.png)
+
+RESULT: PASS
+
+#### /reports/admin/id POST - N/A
+
+#### /reports/admin/id PUT - N/A
+
+#### /reports/admin/id DELETE
+
+
+An authenticated user that is an admin can send DELETE requests to this endpoint, deleting the report.
+
+![test-71](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-71.png)
+
+RESULT: PASS
+
+#### /reports/admin/id GET
+
+When an authenticated admin tries to send a GET request to this endpoint with an id of a report that doesn't exist a 404 Not found is returned.
+
+
+![test-72](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-72.png)
 
 RESULT: PASS
