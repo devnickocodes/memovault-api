@@ -609,3 +609,21 @@ When a user sends a POST request to this endpoint and the user already likes the
 ![test-75](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-75.png)
 
 RESULT: PASS
+
+
+#### /like/comment/<id:int> DELETE
+
+
+An authenticated user that is the owner can send a DELETE request to this endpoint.
+
+![test-41](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-41.png)
+
+RESULT: PASS
+
+#### /like/comment/id GET - 404 Not Found
+
+Any user trying to find a comment like that doesn't exist, a 404 Not Found should be returned.
+
+![test-43](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-43.png)
+
+RESULT: PASS
