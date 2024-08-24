@@ -255,6 +255,11 @@ You can find the testing and validation [here](TESTING.md).
 ## Bugs
 
 - When trying to implement validation in the serializer for the followers app that a user can't follow themselves I got a KeyError, because the 'owner' key was missing.
+
+
+![KeyError](https://github.com/devnickocodes/memovault-api/blob/main/readme_docs/error_1.png)
+
+
 - FIX: The issue was fixed by adding a check that ensures that the owner field is present in the input data. If it is missing, it sets the owner to the user making the request
   
     ```python
