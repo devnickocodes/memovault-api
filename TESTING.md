@@ -753,3 +753,64 @@ When a user tries to send a GET request to this endpoint with an id of a profile
 ![test-62](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-62.png)
 
 RESULT: PASS
+
+
+### Reports endpoints
+
+
+#### /reports/ - GET
+
+
+Unauthenticated users cannot access this endpoint
+
+
+![test-55](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-55.png)
+
+RESULT PASS
+
+
+#### /reports/ - GET
+
+Authenticated users can access only the reports that they have created.
+
+
+![test-56](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-56.png)
+
+
+RESULT PASS
+
+#### /reports/<id:int>/ - GET
+
+Unauthenticated users cannot access this endpoint
+
+![test-81](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-81.png)
+
+RESULT PASS
+
+#### /reports/<id:int>/ - GET
+
+When an authenticated user tries to access a report with an id that doesn't belong to them, 404 Not Found will be returned.
+
+![test-57](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-57.png)
+
+RESULT PASS
+
+#### /reports/<id:int>/ - GET
+
+
+When an authenticated user tries to access a report with an id that belongs to them, details for the specific report should be returned.
+
+![test-58](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-58.png)
+
+RESULT PASS
+
+
+#### /reports/<id:int>/  - GET
+
+When an authenticated user tries to send a GET request to this endpoint with an id of a report that doesn't exist a 404 Not Found will be returned
+
+
+![test-73](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-73.png)
+
+RESULT PASS
+
