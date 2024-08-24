@@ -243,3 +243,104 @@ Any user trying to find a post that doesn't exist, a 404 Not Found should be ret
 
 
 RESULT: PASS
+
+### Comments endpoints
+
+#### /comments/ - GET
+
+
+- An unauthenticated user can see the list of comments, but can't create a comment.
+
+
+![test-18](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-18.png)
+
+RESULT: PASS
+
+
+- An authenticated user sending a POST request to this endpoint with the following JSON data should create a comment.
+
+JSON SENT:
+
+```
+{
+    "post": "1",
+    "content": "lovely post"
+}
+```
+
+
+![test-19](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-19.png)
+
+RESULT: PASS
+
+
+
+- When the authenticated user tries to send a POST request to the endpoint with `content` values missing the validation lets the user know.
+
+
+JSON SENT:
+
+```
+{
+    "post": "1",
+    "content": ""
+}
+```
+
+
+![test-20](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-20.png)
+
+RESULT: PASS
+
+
+
+#### /comments/ - GET
+
+The value of the `comment_like_id` field should be set to the id of the comment like if the request user has liked the comment.
+
+
+![test-46](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-46.png)
+
+RESULT: PASS
+
+
+#### /comments/<id:int>/ - GET 
+
+
+When an unauthenticated user sends a GET request to this endpoint, details for the specific comment should be returned.
+
+Values for `is_owner` and `is_admin` should be set to `false`
+
+
+
+![test-21](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-21.png)
+
+RESULT: PASS
+
+
+When an autheticated user that is the owner but not an admin sends a GET request to this endpoint, details for the specific comment should be returned with slight change this time.
+
+`is_owner` should be set to `true` and `is_admin` should be set to `false`
+
+
+![test-22](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-22.png)
+
+RESULT: PASS
+
+
+When an authenticated user that is not the owner but is an admin sends a GET request to this endpoint, details for the specific comment should be returned with slight change this time.
+
+`is_owner` should be set to `false` and `is_admin` should be set to `true`
+
+
+![test-23](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-23.png)
+
+RESULT: PASS
+
+When an authenticated user that is both the owner and an admin sends a GET request to this endpoint, details for the specific comment should be returned with slight change this time.
+
+`is_owner` should be set to `true` and `is_admin` should be set to `true`
+
+
+![test-24](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-24.png)
+RESULT: PASS
