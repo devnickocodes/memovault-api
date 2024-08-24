@@ -437,3 +437,65 @@ JSON Sent:
 ![test-29](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-29.png)
 
 RESULT: PASS
+
+
+#### /comments/id - DELETE
+
+
+
+- An unauthenticated user cannot send a DELETE request to this endpoint.
+
+Screenshot: N/A  
+
+RESULT: PASS
+
+#### /comments/id - DELETE
+
+
+- An authenticated user that is not the owner or the admin cannot send a DELETE request to this endpoint.
+
+Screenshot: N/A  
+
+RESULT: PASS
+
+
+#### /comments/id - DELETE
+
+
+- An authenticated user that is both the owner and an admin can send a DELETE request to this endpoint.
+
+
+![test-30](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-30.png)
+
+RESULT: PASS
+
+### /comments/id - DELETE
+
+
+- An authenticated user that is the owner but not an admin can send a DELETE request to this endpoint
+
+
+![test-31](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-31.png)
+
+RESULT: PASS
+
+
+### /comments/id - DELETE
+
+
+
+- An authenticated user that is not the owner but is an admin can send a DELETE request to this endpoint
+
+
+![test-32](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-32.png)
+
+RESULT: PASS
+
+### /comments/id/ GET - 404 Not Found
+
+Any user trying to find a comment that doesn't exist, a 404 Not Found should be returned.
+
+
+![test-33](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-32.png)
+
+RESULT: PASS
