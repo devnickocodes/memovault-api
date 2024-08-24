@@ -61,3 +61,59 @@ The users can edit the following fields of their reports.
 
 `reson`
 `custom_reason` (where applicable)
+
+
+## API endpoints
+
+
+| **URL** | **Notes** | **HTTP Method** | **CRUD operation** | **View type** | **POST/PUT data format** |
+|---|---|---:|---|---:|---|
+|  |  |  |  |  |  |
+| **Post endpoints** |  |  |  |  |  |
+| /posts/ | Lists all posts with options to filter, search, and order the results. Authenticated users can create new posts. | GET | Read | List | N/A |
+| /posts/ | Creates a new post. The authenticated user is set as the owner of the post. | POST | Create | List | {<br> "title": "string",<br> "content": "string",<br> "image": "string (optional)"<br>} |
+| /posts/id | Retrieves details of a specific post. | GET | Read | Detail | N/A |
+| /posts/id | Updates details of a specific post. Restricted to the owner or admin. | PUT | Update | Detail | {<br> "title": "string",<br> "content": "string",<br> "image": "string (optional)"<br>} |
+| /posts/id | Deletes a specific post. Restricted to the owner or admin. | DELETE | Delete | Detail | N/A |
+
+| **Comment endpoints** |  |  |  |  |  |
+| /comments/ | Lists all comments with options to filter and order the results. Authenticated users can create new comments. | GET | Read | List | N/A |
+| /comments/ | Creates a new comment associated with a specific post. The authenticated user is set as the owner of the comment. | GET | Read | List |{<br> "post": "integer",<br> "content": "string"<br>} |
+| /comments/id | Retrieves details of a specific comment. | GET | Read | List | N/A |
+| /comments/id | Updates details of a specific comment. Restricted to the owner or admin. | PUT | Update | Detail | {<br> "content": "string"<br>} |
+| /comments/id | Deletes a specific comment. Restricted to the owner or admin. | DELETE | Delete | Detail | N/A |
+
+
+| **Follower endpoints** |  |  |  |  |  |
+| /followers/ | Lists all followers. | GET | Read | List | N/A |
+| /followers/ | Creates a new follower relationship. Restricted to authenticated users. | POST | Create | List | {<br> "followed": "integer"<br>}|
+| /followers/id | Retrieves details about a specific follower relationship. | GET | Read | Detail | N/A |
+| /followers/id | Deletes a specific follower relationship. Restricted to the owner. | DELETE | Delete | Detail | N/A |
+
+
+| **Post Like endpoints** |  |  |  |  |  |
+| /like/post/ | Lists all post likes with options to filter and order the results. | GET | Read | List | N/A |
+| /like/post/ | Creates a new post like associated with a specific post. Authenticated users are set as the owner of the post like. | POST | Create | List | {<br> "post": "integer" <br>} |
+| /like/post/id | Retrieves details of a specific post like. | GET | Read | Detail | N/A |
+| /like/post/id | Deletes a specific post like. | DELETE | Delete | Detail | N/A |
+
+| **Comment Like endpoints** |  |  |  |  |  |
+| /like/comment/ | Lists all comment likes. | GET | Read | List | N/A |
+| /like/comment/ | Creates a new comment like associated with a specific comment. Authenticated users are set as the owner of the comment like. | POST | Create | List | {<br> "comment": "integer" <br>} |
+| /like/comment/id | Retrieves details of a specific comment like. | GET | Read | Detail | N/A |
+| /like/comment/id | Deletes a specific comment like. | DELETE | Delete | Detail | N/A |
+
+| **Profile endpoints** |  |  |  |  |  |
+| /profiles/ | Lists all profiles or filters/searches through existing profiles. | GET | Read | List | N/A |
+| /profiles/id | Retrieves detailes about a specific profile. | GET | Read | Detail | N/A |
+| /profiles/id | Updates a specific profile. Restricted to the owner. | PUT | Update | Detail | {<br> "name": "string (optional)",<br> "bio": "string (optional)",<br> "hobbies": "string (optional)",<br> "image": "string (optional)"<br>} |
+
+| **Report endpoints** |  |  |  |  |  |
+| /reports/ | Lists all reports submitted by the authenticated user. | GET | Read | List | N/A |
+| /reports/ | Creates a new report. The authenticated user is automatically set as the owner of the report. | POST | Create | List | {<br> "post": "integer",<br> "reason": "string",<br> "custom_reason": "string (optional unless 'other' is chosen from the 'reason' dropdown)"<br>} |
+| /reports/id | Retrieves details of a specific report submitted by the authenticated user. | GET | Read | Detail | N/A |
+| /reports/id | Updates details of a specific report. Restricted to the owner. | PUT | Update | Detail | {<br> "reason": "string",<br> "custom_reason": "string (optional unless 'other' is chosen from the 'reason' dropdown)"<br>} |
+| /reports/id | Deletes a specific report. Restricted to the owner. | DELETE | Delete | Detail | N/A |
+| /reports/admin/ | Lists all reports for administrators. | GET | Read | List | N/A |
+| /reports/admin/id | Retrieves details of a specific report for administrators. | GET | Read | List | N/A |
+| /reports/admin/id | Deletes a specific report for administrators. | DELETE | Delete | Detail | N/A |
