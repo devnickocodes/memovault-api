@@ -49,7 +49,7 @@ MemoVault is a social media backend API that allows users to register, log in, c
   * [Deployment](#deployment)
   * [Credits](#credits)
 
-Table of contents generated with <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>markdown-toc</a></i></small> with some adjustments made.
+Table of contents generated with <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/' target="_blank">markdown-toc</a></i></small> with some adjustments made.
 
 
 
