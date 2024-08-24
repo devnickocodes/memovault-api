@@ -1083,4 +1083,22 @@ Python validation was perfomed using [CI Python Linter](https://pep8ci.herokuapp
 
 #### admin.py
 
-![Comments App - admin.py]()
+![Comments App - admin.py](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/comments_admin.py_validation.png)
+
+#### models.py
+
+![Comments App - models.py](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/comments_models.py_validation.png)
+
+
+#### serializers.py
+
+![Comments App - serializers.py](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/comments_serializers.py_validation.png)
+
+
+#### urls.py
+
+![Comments App - urls.py](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/comments_urls.py_validation.png)
+
+#### views.py
+
+![Comments App - views.py](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/comments_views.py_validation.png)
