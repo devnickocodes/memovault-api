@@ -1126,3 +1126,25 @@ Python validation was perfomed using [CI Python Linter](https://pep8ci.herokuapp
 #### views.py
 
 ![Followers App - views.py](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/followers_views.py_validation.png)
+
+### Likes App Python Validation
+
+#### admin.py
+
+![Likes App - admin.py](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/likes_admin.py_validation.png)
+
+#### models.py
+
+![Likes App - models.py](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/likes_models.py_validation.png)
+
+#### serializers.py
+
+![Likes App - serializers.py](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/likes_serializers.py_validation.png)
+
+#### urls.py
+
+![Likes App - urls.py](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/likes_urls.py_validation.png)
+
+#### views.py
+
+![Likes App - views.py](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/likes_views.py_validation.png)

@@ -4,7 +4,6 @@ from .models import PostLike, CommentLike
 from .serializers import PostLikeSerializer, CommentLikeSerializer
 
 
-
 class PostLikeList(generics.ListCreateAPIView):
     """
     List and create post likes.
