@@ -131,7 +131,7 @@ When an authenticated user that is both the owner and an admin sends a GET reque
 RESULT: PASS
 
 
-### /posts/id - PUT
+### /posts/<id:int>/ - PUT
 
 
 - Unauthenticated users cannot send PUT requests to this endpoint.
@@ -196,7 +196,7 @@ JSON SENT:
 
 RESULT: PASS
 
-### /posts/id - DELETE
+### /posts/<id:int>/ - DELETE
 
 - An unauthenticated user cannot send a DELETE request to this endpoint.
 
@@ -234,7 +234,7 @@ RESULT: PASS
 
 RESULT: PASS
 
-### /posts/id/ GET - 404 Not Found
+### /posts/<id:int>/ GET - 404 Not Found
 
 Any user trying to find a post that doesn't exist, a 404 Not Found should be returned.
 
@@ -363,7 +363,7 @@ JSON SENT:
 RESULT: PASS
 
 
-#### /comments/id - PUT
+#### /comments/<id:int>/ - PUT
 
 
 - Unauthenticated users cannot send PUT requests to this endpoint.
@@ -372,7 +372,7 @@ Screenshot: N/A
 
 RESULT: PASS
 
-#### /comments/id - PUT
+#### /comments/<id:int>/ - PUT
 
 
 - An authenticated user that is not the owner or the admin cannot send a PUT request to this endpoint.
@@ -381,7 +381,7 @@ Screenshot: N/A
 
 RESULT: PASS
 
-#### /comments/id - PUT
+#### /comments/<id:int>/ - PUT
 
 - An authenticated user that is both the owner and an admin can send a PUT request to this endpoint being able to update the `content` field.
 
@@ -399,7 +399,7 @@ JSON Sent:
 
 RESULT: PASS
 
-#### /comments/id - PUT
+#### /comments/<id:int>/ - PUT
 
 
 An authenticated user that is the owner but not an admin can send a PUT request to this endpoint being able to update the `content` field.
@@ -419,7 +419,7 @@ JSON Sent:
 RESULT: PASS
 
 
-#### /comments/id - PUT
+#### /comments/<id:int>/ - PUT
 
 
 An authenticated user that is not the owner but is an admin can send a PUT request to this endpoint being able to update the `content` field.
@@ -439,7 +439,7 @@ JSON Sent:
 RESULT: PASS
 
 
-#### /comments/id - DELETE
+#### /comments/<id:int>/ - DELETE
 
 
 
@@ -449,7 +449,7 @@ Screenshot: N/A
 
 RESULT: PASS
 
-#### /comments/id - DELETE
+#### /comments/<id:int>/ - DELETE
 
 
 - An authenticated user that is not the owner or the admin cannot send a DELETE request to this endpoint.
@@ -459,7 +459,7 @@ Screenshot: N/A
 RESULT: PASS
 
 
-#### /comments/id - DELETE
+#### /comments/<id:int>/ - DELETE
 
 
 - An authenticated user that is both the owner and an admin can send a DELETE request to this endpoint.
@@ -469,7 +469,7 @@ RESULT: PASS
 
 RESULT: PASS
 
-### /comments/id - DELETE
+### /comments/<id:int>/ - DELETE
 
 
 - An authenticated user that is the owner but not an admin can send a DELETE request to this endpoint
@@ -480,7 +480,7 @@ RESULT: PASS
 RESULT: PASS
 
 
-### /comments/id - DELETE
+### /comments/<id:int>/ - DELETE
 
 
 
@@ -491,7 +491,7 @@ RESULT: PASS
 
 RESULT: PASS
 
-### /comments/id/ GET - 404 Not Found
+### /comments/<id:int>/ GET - 404 Not Found
 
 Any user trying to find a comment that doesn't exist, a 404 Not Found should be returned.
 
@@ -512,7 +512,7 @@ An unauthenticated or authenticated user can see the list of post likes, but can
 RESULT: PASS
 
 
-#### /like/post/id GET
+#### /like/post/<id:int>/ GET
 
 
 When an unauthenticated or authenticated user sends a GET request to this endpoint, details for the specific post like should be returned.
