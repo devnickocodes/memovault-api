@@ -1073,3 +1073,9 @@ Ten unit tests were executed for the `reports` app. The tests are located in `re
 - Test listing reports without authentication.
 - Test retrieving a specific report with admin authentication.
 - Test retrieving a specific report without authentication.
+
+
+## Python Validation
+
+Python validation was perfomed using [CI Python Linter](https://pep8ci.herokuapp.com/).
+
