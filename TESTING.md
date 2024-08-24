@@ -520,3 +520,27 @@ When an unauthenticated or authenticated user sends a GET request to this endpoi
 ![test-36](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-36.png)
 
 RESULT: PASS
+
+#### /like/post/ POST
+
+
+An authenticated user sending a POST request to this endpoint with the following JSON data can create a post like.
+
+
+```
+{
+    "post": "1"
+}
+```
+
+![test-35](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-35.png)
+
+RESULT: PASS
+
+#### /like/post/ POST
+
+When a user sends a POST request to this endpoint and the user already likes the post a 400 Bad Request will be returned.
+
+![test-74](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-74.png)
+
+RESULT: PASS
