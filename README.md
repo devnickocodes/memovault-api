@@ -8,20 +8,19 @@ MemoVault is a social media backend API that allows users to register, log in, c
 
 ## Table of Contents
 
-
 - [MemoVault](#memovault)
   * [Project Goals](#project-goals)
   * [Planning](#planning)
     + [Data Models](#data-models)
-      - [**Profile**](#--profile--)
-      - [**Post**](#--post--)
-      - [**Comment**](#--comment--)
-      - [**PostLike**](#--postlike--)
-      - [**CommentLike**](#--commentlike--)
-      - [**Follower**](#--follower--)
-      - [**Report**](#--report--)
+      - [Profile](#profile)
+      - [Post](#post)
+      - [Comment](#comment)
+      - [PostLike](#postlike)
+      - [CommentLike](#commentlike)
+      - [Follower](#follower)
+      - [Report](#report)
   * [API endpoints](#api-endpoints)
-  * [Frameworks, libraries and dependencies](#frameworks--libraries-and-dependencies)
+  * [Frameworks, libraries and dependencies](#frameworks-libraries-and-dependencies)
     + [django-cloudinary-storage](#django-cloudinary-storage)
     + [dj-allauth](#dj-allauth)
     + [dj-rest-auth](#dj-rest-auth)
@@ -50,7 +49,7 @@ MemoVault is a social media backend API that allows users to register, log in, c
   * [Deployment](#deployment)
   * [Credits](#credits)
 
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+Table of contents generated with <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>markdown-toc</a></i></small> with some adjustments made.
 
 
 
