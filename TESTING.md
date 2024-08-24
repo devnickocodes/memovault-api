@@ -1102,3 +1102,27 @@ Python validation was perfomed using [CI Python Linter](https://pep8ci.herokuapp
 #### views.py
 
 ![Comments App - views.py](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/comments_views.py_validation.png)
+
+
+
+### Followers App Python Validation
+
+#### admin.py
+
+![Followers App - admin.py](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/followers_admin.py_validation.png)
+
+#### models.py
+
+![Followers App - models.py](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/followers_models.py_validation.png)
+
+#### serializers.py
+
+![Followers App - serializers.py](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/followers_serializers.py_validation.png)
+
+#### urls.py
+
+![Followers App - urls.py](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/followers_urls.py_validation.png)
+
+#### views.py
+
+![Followers App - views.py](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/followers_views.py_validation.png)
