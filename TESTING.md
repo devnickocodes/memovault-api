@@ -1056,3 +1056,20 @@ When an authenticated admin tries to send a GET request to this endpoint with an
 ![test-82](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-82.png)
 
 RESULT: PASS
+
+
+## Automated Testing
+
+
+Ten unit tests were executed for the `reports` app. The tests are located in `reports/tests.py`
+
+- Test creating a report when the user is authenticated.
+- Test creating a report when the user is not authenticated.
+- Test updating a report by the owner of the report.
+- Test updating a report by a user who is not the owner.
+- Test deleting a report by the owner of the report.
+- Test deleting a report by a user who is not the owner.
+- Test listing reports with admin authentication.
+- Test listing reports without authentication.
+- Test retrieving a specific report with admin authentication.
+- Test retrieving a specific report without authentication.
