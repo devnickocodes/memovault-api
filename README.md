@@ -266,3 +266,35 @@ You can find the testing and validation [here](TESTING.md).
     if 'owner' not in data:
         data['owner'] = self.context['request'].user
     ```
+
+
+
+
+- There was another issue trying to install `dj-rest-auth[with_social]`
+
+![dj-rest-auth Issue](https://github.com/devnickocodes/memovault-api/blob/main/readme_docs/error_2.png)
+
+
+- FIX: The issue was fixed by changing the versions of some of the dependacies.
+
+
+
+- An AssertionError arose during development that a FollowerList should either include `queryset` attribute, or override the `get_queryset()` method.
+
+![AssertionError](https://github.com/devnickocodes/memovault-api/blob/main/readme_docs/error_3.png)
+
+
+- FIX: A `get_queryset()` method was added. 
+
+    ```python
+    def get_queryset(self):
+        return Follower.objects.all()
+    ```
+
+
+
+- Another error that occurred was a TypeError. When trying to create a post by filling everything in the form except choosing an image and sticking with the default one, the post would be created, but when trying to create a post and choose a custom image to upload the error would occur.
+
+![TypeError](https://github.com/devnickocodes/memovault-api/blob/main/readme_docs/error_3.png)
+
+- FIX: The issue was fixed by fixing mismatched versions for the cloudinary dependancy with `pip3 install cloudinary==1.32.0`
