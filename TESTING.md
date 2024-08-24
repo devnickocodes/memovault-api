@@ -21,7 +21,7 @@
   * [Reports App Python Validation](#reports-app-python-validation)
 
 
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+Table of contents generated with [markdown-toc](https://ecotrust-canada.github.io/markdown-toc/) with some adjustments made.
 
 
 ## Overview 
