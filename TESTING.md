@@ -275,25 +275,6 @@ RESULT: PASS
 
 
 
-- When the authenticated user tries to send a POST request to the endpoint with `content` values missing the validation lets the user know.
-
-
-JSON SENT:
-
-```
-{
-    "post": "1",
-    "content": ""
-}
-```
-
-
-![test-20](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-20.png)
-
-RESULT: PASS
-
-
-
 #### /comments/ - GET
 
 The value of the `comment_like_id` field should be set to the id of the comment like if the request user has liked the comment.
@@ -343,4 +324,40 @@ When an authenticated user that is both the owner and an admin sends a GET reque
 
 
 ![test-24](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-24.png)
+RESULT: PASS
+
+
+#### /comments/ - POST
+
+An authenticated user sending a POST request to this endpoint with the following JSON data can create a post.
+
+JSON Sent:
+
+```
+{
+    "post": "1",
+    "content": "awesome post !"
+}
+```
+
+![test-25](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-25.png)
+
+RESULT: PASS
+
+
+- When the authenticated user tries to send a POST request to the endpoint with `content` values missing the validation lets the user know.
+
+
+JSON SENT:
+
+```
+{
+    "post": "1",
+    "content": ""
+}
+```
+
+
+![test-20](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-20.png)
+
 RESULT: PASS
