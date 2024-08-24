@@ -5,6 +5,55 @@
 MemoVault is a social media backend API that allows users to register, log in, create posts, follow/unfollow other users, like comments and posts as well as comment on posts, manage their profiles, report posts as well as manage their reports. This project is designed to be the foundation for a social media platform. The API is also used for the 
 [MemoVault React Web App](https://github.com/devnickocodes/memovault-app)
 
+
+## Table of Contents
+
+
+- [MemoVault](#memovault)
+  * [Project Goals](#project-goals)
+  * [Planning](#planning)
+    + [Data Models](#data-models)
+      - [**Profile**](#--profile--)
+      - [**Post**](#--post--)
+      - [**Comment**](#--comment--)
+      - [**PostLike**](#--postlike--)
+      - [**CommentLike**](#--commentlike--)
+      - [**Follower**](#--follower--)
+      - [**Report**](#--report--)
+  * [API endpoints](#api-endpoints)
+  * [Frameworks, libraries and dependencies](#frameworks--libraries-and-dependencies)
+    + [django-cloudinary-storage](#django-cloudinary-storage)
+    + [dj-allauth](#dj-allauth)
+    + [dj-rest-auth](#dj-rest-auth)
+    + [djangorestframework-simplejwt](#djangorestframework-simplejwt)
+    + [dj-database-url](#dj-database-url)
+    + [psycopg2](#psycopg2)
+    + [python-dateutil](#python-dateutil)
+    + [asgiref](#asgiref)
+    + [cloudinary](#cloudinary)
+    + [cryptography](#cryptography)
+    + [django](#django)
+    + [django-cors-headers](#django-cors-headers)
+    + [django-filter](#django-filter)
+    + [djangorestframework](#djangorestframework)
+    + [gunicorn](#gunicorn)
+    + [oauthlib](#oauthlib)
+    + [Pillow](#pillow)
+    + [PyJWT](#pyjwt)
+    + [python3-openid](#python3-openid)
+    + [pytz](#pytz)
+    + [requests-oauthlib](#requests-oauthlib)
+    + [sqlparse](#sqlparse)
+    + [urllib3](#urllib3)
+  * [Testing](#testing)
+  * [Bugs](#bugs)
+  * [Deployment](#deployment)
+  * [Credits](#credits)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
+
+
 ## Planning
 
 The planning phase for MemoVault began with outlining the key features and creating user stories for the backend API. These user stories were instrumental in shaping the design and functionality of the API, ensuring all necessary functionality was covered.
