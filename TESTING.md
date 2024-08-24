@@ -627,3 +627,54 @@ Any user trying to find a comment like that doesn't exist, a 404 Not Found shoul
 ![test-43](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-43.png)
 
 RESULT: PASS
+
+
+### Profiles endpoints
+
+#### /profiles/ - GET
+
+
+An unauthenticated or authenticated user can see the list of profiles.
+
+
+![test-48](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-48.png)
+
+RESULT: PASS
+
+
+#### /profiles/<id:int> - GET 
+
+When an unauthenticated or authenticated user sends a GET request to this endpoint, details for the specific profile should be returned.
+
+
+![test-49](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-49.png)
+
+RESULT: PASS
+
+
+When an authenticated user sends a GET request to this endpoint, details for the specific profile should be returned with slight change in the returned values for some of the fields.
+
+If the user is looking at a different users profile and the owner of the profile is following the requesting user the value of `follows_you` should be set to true and the value of `following_id` should be set to the id of the follow relationship if the requesting user is following the profile's owner otherwise it will be `null`.
+
+Here norm is following admin but admin is not following norm.
+
+![test-50](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-50.png)
+
+RESULT: PASS
+
+
+Here norm is not following admin and admin is not following norm
+
+
+![test-51](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-51.png)
+
+RESULT: PASS
+
+
+Here Norm is not following admin but admin is following norm
+
+![test-52](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-52.png)
+
+RESULT: PASS
+
+
