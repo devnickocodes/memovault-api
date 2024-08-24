@@ -958,11 +958,11 @@ An authenticated user that is an admin can send GET requests to this endpoint, d
 
 RESULT: PASS
 
-#### /reports/admin/id POST - N/A
+#### /reports/admin/ POST - N/A
 
-#### /reports/admin/id PUT - N/A
+#### /reports/admin/ PUT - N/A
 
-#### /reports/admin/id DELETE
+#### /reports/admin/<id:int>/ DELETE
 
 
 An authenticated user that is an admin can send DELETE requests to this endpoint, deleting the report.
@@ -971,11 +971,88 @@ An authenticated user that is an admin can send DELETE requests to this endpoint
 
 RESULT: PASS
 
-#### /reports/admin/id GET
+#### /reports/admin/<id:int>/ GET
 
 When an authenticated admin tries to send a GET request to this endpoint with an id of a report that doesn't exist a 404 Not found is returned.
 
 
 ![test-72](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-72.png)
+
+RESULT: PASS
+
+### Follower endpoints
+
+#### /followers/ - GET
+
+An authenticated or unauthenticated users can send a GET request to this endpoint, listing all follower relationships.
+
+![test-76](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-76.png)
+
+RESULT: PASS
+
+#### /followers/<id:int>/ - GET 
+
+
+When a user sends a GET request to this endpoint, details for the specific follower relationship should be returned.
+
+![test-83](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-83.png)
+
+RESULT: PASS
+
+
+#### /followers/ - POST
+
+
+An authenticated user can send a POST request to this endpoint establishing a follower relationship.
+
+JSON Sent:
+
+```
+{
+    "followed": "3",
+}
+```
+
+
+![test-77](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-77.png)
+
+RESULT: PASS
+
+
+#### /followers/ - POST
+
+
+When an authenticated user tries to send a POST request to this endpoint trying to follow themselves, the validation will let the user know that they can't.
+
+JSON Sent:
+
+```
+{
+    "followed": "1",
+}
+```
+
+
+![test-78](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-78.png)
+
+RESULT: PASS
+
+#### /followers/ - PUT - N/A
+
+
+#### /followers/id - DELETE
+
+An authenticated owner of the follow relationship can send a DELETE request to this endpoint.
+
+
+![test-79](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-79.png)
+
+RESULT: PASS
+
+#### /followers/<id:int>/ GET
+
+When an authenticated admin tries to send a GET request to this endpoint with an id of a follower relationship that doesn't exist a 404 Not found is returned.
+
+![test-82](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-82.png)
 
 RESULT: PASS
