@@ -356,3 +356,14 @@ The MemoVault API is deployed on Heroku, using a PostgreSQL database provided by
 - Verify Deployment
 
     - After the deployment process completes, Heroku will provide a link to the deployed application. Monitor the build logs for any errors and ensure the application runs as expected.
+
+## Credits
+
+- Some of the code is inspired by [Code Institute's](https://codeinstitute.net/) Django REST Framework module with some adjustments made to accomodate the needs for this API.
+- Profile and Post placeholder images - [Pixabay](https://pixabay.com/)
+- The queryset method to fix the AssertionError for the FollowersList - [Stackoverflow Article](https://stackoverflow.com/questions/19707237/use-get-queryset-method-or-set-queryset-variable)
+- Code for validation and updating inspired by [DRF](https://www.django-rest-framework.org/api-guide/serializers/#validation)
+- Testing for force_authenticate testcases - [Stackoverflow Article](https://stackoverflow.com/questions/66993698/how-to-force-authenticate-in-django-rest-framework-tests)
+- [This](https://www.django-rest-framework.org/api-guide/testing/) page was also used for overall testing
+- Inspiration for docstring formatting can be found [here](https://docs.djangoproject.com/en/3.2/ref/contrib/admin/admindocs/)
+- The documentations for [Django](https://docs.djangoproject.com/en/5.1/) and [Django Rest Framework](https://www.django-rest-framework.org/) were also researched.
