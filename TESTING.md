@@ -918,6 +918,15 @@ An unauthenticated user cannot send GET requests to this endpoint. An HTTP statu
 
 RESULT: PASS
 
+
+#### /reports/admin/<id:int>/ - GET
+
+Unauthenticated users cannot access this endpoint
+
+![test-84](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-84.png)
+
+RESULT: PASS
+
 #### /reports/admin/ GET
 
 An authenticated user that is not an admin cannot send GET requests to this endpoint. An HTTP of 403 Forbidden is returned.
@@ -1073,6 +1082,8 @@ Ten unit tests were executed for the `reports` app. The tests are located in `re
 - Test listing reports without authentication.
 - Test retrieving a specific report with admin authentication.
 - Test retrieving a specific report without authentication.
+
+![Automated Tests Results](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/automated_testing.png)
 
 
 ## Python Validation
