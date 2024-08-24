@@ -131,7 +131,7 @@ When an authenticated user that is both the owner and an admin sends a GET reque
 RESULT: PASS
 
 
-### /posts/<id:int>/ - PUT
+#### /posts/<id:int>/ - PUT
 
 
 - Unauthenticated users cannot send PUT requests to this endpoint.
@@ -196,7 +196,7 @@ JSON SENT:
 
 RESULT: PASS
 
-### /posts/<id:int>/ - DELETE
+#### /posts/<id:int>/ - DELETE
 
 - An unauthenticated user cannot send a DELETE request to this endpoint.
 
@@ -234,7 +234,7 @@ RESULT: PASS
 
 RESULT: PASS
 
-### /posts/<id:int>/ GET - 404 Not Found
+#### /posts/<id:int>/ GET - 404 Not Found
 
 Any user trying to find a post that doesn't exist, a 404 Not Found should be returned.
 
@@ -469,7 +469,7 @@ RESULT: PASS
 
 RESULT: PASS
 
-### /comments/<id:int>/ - DELETE
+#### /comments/<id:int>/ - DELETE
 
 
 - An authenticated user that is the owner but not an admin can send a DELETE request to this endpoint
@@ -480,7 +480,7 @@ RESULT: PASS
 RESULT: PASS
 
 
-### /comments/<id:int>/ - DELETE
+#### /comments/<id:int>/ - DELETE
 
 
 
@@ -491,7 +491,7 @@ RESULT: PASS
 
 RESULT: PASS
 
-### /comments/<id:int>/ GET - 404 Not Found
+#### /comments/<id:int>/ GET - 404 Not Found
 
 Any user trying to find a comment that doesn't exist, a 404 Not Found should be returned.
 
@@ -701,7 +701,7 @@ Screenshot: N/A
 RESULT: PASS
 
 
-### /profiles/<id:int>/ - PUT
+#### /profiles/<id:int>/ - PUT
 
 
 The authenticated owner of the profile can update any of the following fields (All optional)
@@ -748,7 +748,7 @@ JSON Sent:
 RESULT: PASS
 
 
-### /profiles/id - DELETE
+#### /profiles/id - DELETE
 
 
 - Scheduled to be included in future implementations
@@ -1049,7 +1049,7 @@ RESULT: PASS
 #### /followers/ - PUT - N/A
 
 
-#### /followers/id - DELETE
+#### /followers/<id:int>/  - DELETE
 
 An authenticated owner of the follow relationship can send a DELETE request to this endpoint.
 
@@ -1088,7 +1088,7 @@ Ten unit tests were executed for the `reports` app. The tests are located in `re
 
 ## Python Validation
 
-Python validation was perfomed using [CI Python Linter](https://pep8ci.herokuapp.com/).
+Python validation was performed using [CI Python Linter](https://pep8ci.herokuapp.com/).
 
 ### Comments App Python Validation
 
