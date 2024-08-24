@@ -109,3 +109,144 @@ The users can edit the following fields of their reports.
 | /reports/admin/ | Lists all reports for administrators. | GET | Read | List | N/A |
 | /reports/admin/id | Retrieves details of a specific report for administrators. | GET | Read | List | N/A |
 | /reports/admin/id | Deletes a specific report for administrators. | DELETE | Delete | Detail | N/A |
+
+
+## Frameworks, libraries and dependencies
+
+The MemoVault API is developed in Python, using [Django](https://www.djangoproject.com) and [Django Rest Framework](https://www.django-rest-framework.org/).
+
+Find all utilities, apps, and modules that were also used bellow:
+
+
+### django-cloudinary-storage
+https://pypi.org/project/django-cloudinary-storage/
+
+Enables Cloudinary integration for managing and storing media files in the cloud.
+
+
+### dj-allauth
+https://django-allauth.readthedocs.io/en/latest/
+
+Provides comprehensive user authentication, registration, and account management functionalities. Future updates may include social authentication via this package.
+
+
+### dj-rest-auth
+https://dj-rest-auth.readthedocs.io/en/latest/introduction.html
+
+Provides ready-to-use REST API endpoints for user authentication processes, including login, logout, password reset, and user registration.
+
+
+### djangorestframework-simplejwt
+https://django-rest-framework-simplejwt.readthedocs.io/en/latest/
+
+Facilitates JSON web token authentication for securing API endpoints and user sessions.
+
+
+### dj-database-url
+https://pypi.org/project/dj-database-url/
+
+Enables easy configuration of the database connection using environment variables.
+
+
+### psycopg2
+https://pypi.org/project/psycopg2/
+
+A PostgreSQL database adapter for Python, enabling seamless interaction with PostgreSQL databases.
+
+### python-dateutil
+https://pypi.org/project/python-dateutil/
+
+Provides powerful extensions to the standard datetime module.
+
+### asgiref
+
+https://pypi.org/project/asgiref/
+
+Provides an asynchronous server gateway interface (ASGI) reference implementation for Python web servers and frameworks.
+
+
+### cloudinary
+https://pypi.org/project/cloudinary/
+
+A Python client library for integrating with Cloudinary, a cloud service for managing media.
+
+
+### cryptography
+https://pypi.org/project/cryptography/
+
+A package designed to provide cryptographic recipes and primitives to Python developers.
+
+
+### django
+https://www.djangoproject.com/
+
+A high-level Python web framework that encourages rapid development and clean, pragmatic design.
+
+### django-cors-headers
+https://pypi.org/project/django-cors-headers/
+
+Django application for handling the server headers required for Cross-Origin Resource Sharing (CORS).
+
+
+### django-filter
+https://django-filter.readthedocs.io/en/stable/
+
+Facilitates the addition of dynamic query sets to Django REST Framework views by allowing complex filtering.
+
+
+### djangorestframework
+https://www.django-rest-framework.org/
+
+A powerful and flexible toolkit for building Web APIs in Django.
+
+### gunicorn 
+https://gunicorn.org/
+
+A Python WSGI HTTP server for UNIX, useful for running Django applications.
+
+
+### oauthlib
+https://oauthlib.readthedocs.io/en/latest/
+
+A thorough implementation of the OAuth request-signing logic for Python.
+
+
+### Pillow
+https://pillow.readthedocs.io/en/stable/
+
+This library provides extensive file format support, an efficient internal representation, and fairly powerful image processing capabilities.
+
+### PyJWT
+https://pyjwt.readthedocs.io/en/latest/
+
+Python library which allows you to encode and decode JSON Web Tokens (JWT)
+
+
+### python3-openid
+https://pypi.org/project/python3-openid/
+
+A set of Python packages to support use of the OpenID decentralized identity system in your application.
+
+### pytz
+https://pypi.org/project/pytz/
+
+Enables accurate and cross-platform timezone calculations
+
+
+### requests-oauthlib
+
+Requests-OAuthlib uses the Python Requests and OAuthlib libraries to provide an easy-to-use Python interface for building OAuth1 and OAuth2 clients.
+
+### sqlparse
+https://pypi.org/project/sqlparse/
+
+A non-validating SQL parser for Python, used for splitting, formatting, and parsing SQL statements.
+
+### urllib3
+https://urllib3.readthedocs.io/en/latest/
+
+A powerful, user-friendly HTTP client for Python
+
+## Testing
+
+You can find the testing and validation [here](TESTING.md).
