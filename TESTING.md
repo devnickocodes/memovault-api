@@ -578,11 +578,34 @@ An unauthenticated or authenticated user can see the list of comment likes, but 
 RESULT: PASS
 
 
-#### /like/comment/id GET
+#### /like/comment/<id:int>/ GET
 
 
 When an unauthenticated or authenticated user sends a GET request to this endpoint, details for the specific comment like should be returned.
 
 ![test-40](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-40.png)
+
+RESULT: PASS
+
+#### /like/comment/ POST
+
+An authenticated user sending a POST request to this endpoint with the following JSON data can create a comment like.
+
+
+```
+{
+    "comment": "10"
+}
+```
+
+![test-39](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-39.png)
+
+RESULT: PASS
+
+#### /like/comment/ POST
+
+When a user sends a POST request to this endpoint and the user already likes the comment a 400 Bad Request will be returned.
+
+![test-75](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-75.png)
 
 RESULT: PASS
