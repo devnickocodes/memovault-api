@@ -611,7 +611,7 @@ When a user sends a POST request to this endpoint and the user already likes the
 RESULT: PASS
 
 
-#### /like/comment/<id:int> DELETE
+#### /like/comment/<id:int>/ DELETE
 
 
 An authenticated user that is the owner can send a DELETE request to this endpoint.
@@ -620,7 +620,7 @@ An authenticated user that is the owner can send a DELETE request to this endpoi
 
 RESULT: PASS
 
-#### /like/comment/id GET - 404 Not Found
+#### /like/comment/<id:int>/ GET - 404 Not Found
 
 Any user trying to find a comment like that doesn't exist, a 404 Not Found should be returned.
 
@@ -642,7 +642,7 @@ An unauthenticated or authenticated user can see the list of profiles.
 RESULT: PASS
 
 
-#### /profiles/<id:int> - GET 
+#### /profiles/<id:int>/ - GET 
 
 When an unauthenticated or authenticated user sends a GET request to this endpoint, details for the specific profile should be returned.
 
@@ -678,3 +678,78 @@ Here Norm is not following admin but admin is following norm
 RESULT: PASS
 
 
+### /profiles/<id:int>/ - PUT
+
+
+- Unauthenticated users cannot send PUT requests to this endpoint.
+
+Screenshot: N/A  
+
+RESULT: PASS
+
+- An authenticated user that is not the owner cannot send a PUT request to this endpoint.
+
+Screenshot: N/A  
+
+RESULT: PASS
+
+
+### /profiles/<id:int>/ - PUT
+
+
+The authenticated owner of the profile can update any of the following fields (All optional)
+
+`name` 
+`hobbies` 
+`bio` 
+`image` 
+
+
+JSON Sent:
+
+```
+{
+    "name": "nick",
+    "hobbies": "working out, music, books",
+    "bio" : "Hello from the admin",
+    "image: ""
+}
+```
+
+![test-53](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-53.png)
+
+RESULT: PASS
+
+
+The bellow example is with every field being empty
+
+JSON Sent:
+
+```
+{
+    "name": "",
+    "hobbies": "",
+    "bio" : "",
+    "image: ""
+}
+```
+
+
+
+![test-54](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-54.png)
+
+RESULT: PASS
+
+
+### /profiles/id - DELETE
+
+
+- Scheduled to be included in future implementations
+
+#### /profiles/<id:int> GET - 404 Not Found
+
+When a user tries to send a GET request to this endpoint with an id of a profile that doesn't exist a 404 Not Found will be returned.
+
+![test-62](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-62.png)
+
+RESULT: PASS
