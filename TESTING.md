@@ -860,3 +860,43 @@ An owner of a post cant report their own post
 
 RESULT: PASS
 
+#### /reports/<id:int>/  - PUT
+
+
+An authenticated user can send a PUT request to this endpoint with the id of a report that they own.
+
+
+JSON Sent:
+
+```
+{
+    "post": "7",
+    "reason": "inappropriate",
+    "custom_reason" : ""
+}
+```
+
+![test-61](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-61.png)
+
+RESULT: PASS
+
+
+#### /reports/id - DELETE
+
+An authenticted owner of a report can send a DELETE request to this endpoint, deleting the report.
+
+
+
+![test-64](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-64.png)
+
+RESULT: PASS
+
+
+#### /reports/<id:int>/  - GET NOT FOUND
+
+When an authenticated user tries to send a GET request to this endpoint with an id of a report that doesn't exist a 404 Not found is returned.
+
+
+![test-63](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-63.png)
+
+RESULT PASS
