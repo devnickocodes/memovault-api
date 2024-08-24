@@ -559,6 +559,30 @@ RESULT: PASS
 
 Any user trying to find a post like that doesn't exist, a 404 Not Found should be returned.
 
-SCREENSHOT test-42
+![test-42](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-42.png)
+
+RESULT: PASS
+
+
+### Comment Like endpoints
+
+
+
+#### /like/comment/ GET
+
+An unauthenticated or authenticated user can see the list of comment likes, but can't create a like on a comment.
+
+
+![test-38](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-38.png)
+
+RESULT: PASS
+
+
+#### /like/comment/id GET
+
+
+When an unauthenticated or authenticated user sends a GET request to this endpoint, details for the specific comment like should be returned.
+
+![test-40](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-40.png)
 
 RESULT: PASS
