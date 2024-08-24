@@ -766,7 +766,7 @@ Unauthenticated users cannot access this endpoint
 
 ![test-55](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-55.png)
 
-RESULT PASS
+RESULT: PASS
 
 
 #### /reports/ - GET
@@ -777,7 +777,7 @@ Authenticated users can access only the reports that they have created.
 ![test-56](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-56.png)
 
 
-RESULT PASS
+RESULT: PASS
 
 #### /reports/<id:int>/ - GET
 
@@ -785,7 +785,7 @@ Unauthenticated users cannot access this endpoint
 
 ![test-81](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-81.png)
 
-RESULT PASS
+RESULT: PASS
 
 #### /reports/<id:int>/ - GET
 
@@ -793,7 +793,7 @@ When an authenticated user tries to access a report with an id that doesn't belo
 
 ![test-57](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-57.png)
 
-RESULT PASS
+RESULT: PASS
 
 #### /reports/<id:int>/ - GET
 
@@ -802,7 +802,7 @@ When an authenticated user tries to access a report with an id that belongs to t
 
 ![test-58](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-58.png)
 
-RESULT PASS
+RESULT: PASS
 
 
 #### /reports/<id:int>/  - GET
@@ -812,5 +812,51 @@ When an authenticated user tries to send a GET request to this endpoint with an 
 
 ![test-73](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-73.png)
 
-RESULT PASS
+RESULT: PASS
+
+#### /reports/<id:int>/ - POST
+
+An authenticated user can create a report. If the user selects any of the reasons except 'Other', the custom reason field is optional.
+
+
+JSON Sent:
+
+```
+{
+    "post": "7",
+    "reason": "spam",
+    "custom_reason" : ""
+}
+```
+
+![test-59](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-59.png)
+
+RESULT: PASS
+
+#### /reports/<id:int>/ - POST
+
+An authenticated user can create a report. If the user selects 'Other' from the reasons dropdown, the custom reason field becomes required and an HTTP status of 400 Bad Request is returned when it is left empty.
+
+
+JSON Sent:
+
+```
+{
+    "post": "8",
+    "reason": "other",
+    "custom_reason" : ""
+}
+```
+
+![test-60](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-60.png)
+
+RESULT: PASS
+
+#### /reports/<id:int>/ - POST
+
+An owner of a post cant report their own post
+
+![test-80](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-80.png)
+
+RESULT: PASS
 
