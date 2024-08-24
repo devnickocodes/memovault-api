@@ -892,11 +892,61 @@ An authenticted owner of a report can send a DELETE request to this endpoint, de
 RESULT: PASS
 
 
-#### /reports/<id:int>/  - GET NOT FOUND
+#### /reports/<id:int>/  - GET 404 Not Found
 
 When an authenticated user tries to send a GET request to this endpoint with an id of a report that doesn't exist a 404 Not found is returned.
 
 
 ![test-63](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-63.png)
 
-RESULT PASS
+RESULT: PASS
+
+#### /reports/admin/ GET                 
+
+An unauthenticated user cannot send GET requests to this endpoint. An HTTP status of 403 Forbidden is returned.
+
+
+![test-65](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-65.png)
+
+
+RESULT: PASS
+
+#### /reports/admin/ GET
+
+An authenticated user that is not an admin cannot send GET requests to this endpoint. An HTTP of 403 Forbidden is returned.
+
+
+
+![test-66](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-66.png)
+
+RESULT: PASS
+
+
+#### /reports/admin/ GET
+
+An authenticated user that is an admin can send GET requests to this endpoint. Listing all reports regardless of the owner.
+
+
+
+![test-67](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-67.png)
+
+RESULT: PASS
+
+#### /reports/admin/<id:int>/ GET
+
+
+An authenticated user that is not an admin user cannot send GET requests to this endpoint. An HTTP of 403 Forbidden is returned.
+
+
+![test-69](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-69.png)
+
+RESULT: PASS
+
+#### /reports/admin/<id:int>/ GET
+
+An authenticated user that is an admin can send GET requests to this endpoint, details for the specific report should be returned.
+
+
+![test-70](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/test-70.png)
+
+RESULT: PASS
