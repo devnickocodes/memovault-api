@@ -27,8 +27,10 @@ class ReportSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Report
-        fields = ['id', 'owner', 'is_owner', 'is_admin', 'post', 'post_title', 'reason',
-                  'custom_reason', 'created_at', 'updated_at']
+        fields = ['id', 'owner', 'is_owner', 'is_admin', 'post',
+                  'post_title', 'reason', 'custom_reason', 'created_at',
+                  'updated_at']
+
     def get_is_owner(self, obj):
         """
         Determines if the requesting user is the owner of the reported post.

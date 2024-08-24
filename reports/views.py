@@ -7,7 +7,6 @@ from posts.models import Post
 from .serializers import ReportSerializer
 
 
-
 class ReportListCreate(generics.ListCreateAPIView):
     """
     List all reports or create a new report.
@@ -108,7 +107,7 @@ class AdminReportList(generics.ListAPIView):
                                                ordering reports.
     """
     serializer_class = ReportSerializer
-    permission_classes = [IsAdmin]
+    permission_classes = [permissions.IsAuthenticated, IsAdmin]
     queryset = Report.objects.all()
     filter_backends = [
         DjangoFilterBackend,
@@ -139,5 +138,5 @@ class AdminReportDetail(generics.RetrieveDestroyAPIView):
         queryset (QuerySet): The queryset used to retrieve all reports.
     """
     serializer_class = ReportSerializer
-    permission_classes = [IsAdmin]
+    permission_classes = [permissions.IsAuthenticated, IsAdmin]
     queryset = Report.objects.all()

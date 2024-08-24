@@ -1216,3 +1216,31 @@ Python validation was perfomed using [CI Python Linter](https://pep8ci.herokuapp
 #### views.py
 
 ![Profiles App - views.py](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/profiles_views.py_validation.png)
+
+
+### Reports App Python Validation
+
+#### admin.py
+
+![Reports App - admin.py](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/reports_admin.py_validation.png)
+
+#### models.py
+
+![Reports App - models.py](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/reports_models.py_validation.png)
+
+#### serializers.py
+
+![Reports App - serializers.py](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/reports_serializers.py_validation.png)
+
+#### tests.py
+
+![Reports App - tests.py](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/reports_tests.py_validation.png)
+
+#### urls.py
+
+![Reports App - urls.py](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/reports_urls.py_validation.png)
+
+#### views.py
+
+![Reports App - views.py](https://github.com/devnickocodes/memovault-api/blob/main/testing_docs/reports_views.py_validation.png)
+
