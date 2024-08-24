@@ -298,3 +298,61 @@ You can find the testing and validation [here](TESTING.md).
 ![TypeError](https://github.com/devnickocodes/memovault-api/blob/main/readme_docs/error_3.png)
 
 - FIX: The issue was fixed by fixing mismatched versions for the cloudinary dependancy with `pip3 install cloudinary==1.32.0`
+
+
+## Deployment
+
+The MemoVault API is deployed on Heroku, using a PostgreSQL database provided by ElephantSQL. For deployment follow the steps bellow:
+
+
+- Fork or clone this repository from GitHub
+
+- Configure Cloudinary
+
+    - A Cloudinary account is needed for managing media files.
+    - Create and log in to your Cloudinary account.
+    - Access the 'Dashboard' section and click on 'Go to API Keys'
+    - Find and copy the 'API Environment variable' starting with cloudinary:// and change '<your_api_key>' with your API Key and '<your_api_secret>' with your API Secret (reveal it by clicking the eye icon if necessary). Store it secretly for later.
+
+- Set Up Heroku Application
+
+    - Create and log into your Heroku account.
+    - Click on 'New' in the top-right corner and select 'Create new app'.
+    - Provide a name for your app and select a region.
+    - Click 'Create app' to initialize it.
+
+- Configure PostgreSQL with ElephantSQL
+
+    - Create and log in to your ElephantSQL account.
+    - Click 'Create new instance' on the dashboard.
+    - Name your instance and select the 'Tiny Turtle (free)' plan.
+    - Choose the data center region that is closest to you.
+    - Click 'Review' and then 'Create Instance'.
+    - Copy the database URL (beginning with postgres://) from the ElephantSQL dashboard.
+
+- Set Environment Variables on Heroku
+
+    - Return to the Heroku dashboard for your application.
+    - Go to the 'Settings' tab and click on 'Reveal Config Vars'.
+    - Enter the following environment variables:
+    
+      - `CLOUDINARY_URL` : Paste the Cloudinary URL you saved earlier.
+      - `DATABASE_URL` : Insert the PostgreSQL database URL from ElephantSQL.
+      - `SECRET_KEY`: Generate your own secret key.
+      - `LOCAL_HOST`: The host address for local development.
+      - `HEROKU_HOST`: The host address of your Heroku deployment.
+      - `HEROKU_URL`: The base URL for your Heroku application which is used for the CSRF_TRUSTED_ORIGINS.
+      - `LOCAL_URL`: URL for local development access which is used for the CSRF_TRUSTED_ORIGINS.
+      - `DEV`: A development flag used to indicate if the environment is in development mode.
+
+- Deploy the MemoVault API
+
+    - In the Heroku dashboard, navigate to the 'Deploy' tab.
+    - Choose 'GitHub' as your deployment method. Authorize Heroku to connect to GitHub if needed.
+    - Search for your repository and click 'Connect'.
+    - Optionally, enable 'Automatic Deploys' to redeploy the app automatically when changes are pushed to GitHub.
+    - For a manual deployment, select 'main' as the branch and click 'Deploy Branch'.
+
+- Verify Deployment
+
+    - After the deployment process completes, Heroku will provide a link to the deployed application. Monitor the build logs for any errors and ensure the application runs as expected.
